@@ -1,0 +1,26 @@
+citHeader("Thanks for using the DLBCLdata package!",
+          "We have invested a lot of time and effort this package,",
+          "so please cite it if you are using it. Thanks!")
+
+citEntry(entry = "Manual",
+         title = "DLBCL: Fast, efficient, and robust microarray translation",
+         author = personList(person(family="Bilgrau",
+                                    given="Anders",
+                                    middle="Ellern",
+                                    email="abilgrau@math.aau.dk"),
+                             person(family="Larsen",
+                                    given="Steffen",
+                                    middle="Falgreen",
+                                    email="sfl@rn.dk")),
+         url = "http://github.com/AEBilgrau/DLBCLdata",
+         year = "2014",
+         textVersion = paste("Falgreen, Steffen; Bilgrau, Anders; DLBCLdata:"
+                             "A collection of Large-Scale Diffuse Large B-Cell",
+                             "Lymphoma gene expression profile studies.;",
+                             "http://github.com/AEBilgrau/DLBCLdata"))
+
+
+citFooter("Suggestions for improvements, comments, and bug",
+          "reports are very welcome at",
+          "http://github.com/AEBilgrau/DLBCLdata/issues")
+
