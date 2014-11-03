@@ -3,7 +3,7 @@
 \alias{downloadAndPrepareGEOData}
 \title{Download GEO dataset}
 \usage{
-downloadAndPrepareGEOData(geo_nbr, destdir = getwd(), verbose = FALSE,
+downloadAndPrepareGEOData(geo_nbr, destdir = getwd(), verbose = TRUE,
   clean = TRUE)
 }
 \arguments{
@@ -16,7 +16,21 @@ downloadAndPrepareGEOData(geo_nbr, destdir = getwd(), verbose = FALSE,
 \item{clean}{Should the strictly unnessesary files be deleted?}
 }
 \description{
-Function for downloading a GEO dataset. Simply a wrapper for \code{getGEO}
-and \code{getGEOSuppFiles}.
+Function for downloading a GEO dataset. Simply a wrapper for
+and \code{getGEOSuppFiles} which downloads and unzips the
+\code{.CEL} files in the GEO series.
+}
+\note{
+The function will overwrite existing files in the \code{destdir}.
+}
+\examples{
+\dontrun{
+downloadAndPrepareGEOData(geo_nbr = "GSE18376",
+                          destdir = tempdir())
+}
+}
+\author{
+Anders Ellern Bilgrau,
+  Steffen Falgreen Larsen
 }
 
