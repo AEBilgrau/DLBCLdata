@@ -3,22 +3,22 @@
 \alias{downloadAndPrepareGEOData}
 \title{Download GEO dataset}
 \usage{
-downloadAndPrepareGEOData(geo_nbr, destdir = getwd(), verbose = TRUE,
-  clean = TRUE)
+downloadAndPrepareGEOData(geo_nbr, destdir = getwd(), clean = TRUE,
+  verbose = TRUE)
 }
 \arguments{
 \item{geo_nbr}{The GEO ascession number.}
 
 \item{destdir}{The destination dir of the downloaded files.}
 
-\item{verbose}{Signal the process.}
-
 \item{clean}{Should the strictly unnessesary files be deleted?}
+
+\item{verbose}{Signal the process.}
 }
 \description{
-Function for downloading a GEO dataset. Simply a wrapper for
-and \code{getGEOSuppFiles} which downloads and unzips the
-\code{.CEL} files in the GEO series.
+Function for downloading a GEO dataset and prepare it for preprocessing.
+The function uses \code{getGEOSuppFiles} which downloads the data. The
+function then unzips the data files in the GEO series.
 }
 \note{
 The function will overwrite existing files in the \code{destdir}.
