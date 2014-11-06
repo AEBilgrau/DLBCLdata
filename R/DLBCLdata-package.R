@@ -1,4 +1,4 @@
-#' DLBCLdata: Diffuse Large B-cell Lymphoma data
+#' \pkg{DLBCLdata}: Diffuse Large B-cell Lymphoma data
 #'
 #' An R-package for reproducible and easily available datasets in DLBCL.
 #' @author
@@ -8,5 +8,25 @@
 #' @name DLBCLdata-package
 #' @aliases DLBCLdata-package DLBCLdata dlbcldata dlbcl DLBCL
 #' @examples
-#' 2+2 # FILL
+#' # Overview of the curated available data:
+#' data(DLBCL_overview)
+#' print(DLBCL_overview)
+NULL
+
+#' Overview of available DLBCL data
+#'
+#' A \code{data.frame} of the manually checked and curated DLBCL datasets in
+#' the \pkg{DLBCLdata}-package.
+#'
+#' @docType data
+#' @name DLBCL_overview
+#' @format
+#'   A \code{data.frame} giving information about the DLBCL studies:\cr\cr
+#'   \code{'data.frame':  11 obs. of  2 variables:} \cr
+#'   \code{$ GSE  : chr  "GSE19246" "GSE12195" "GSE22895" "GSE31312" ...}\cr
+#'   \code{$ Study: chr  "BCCA" "CUICG" "HMRC" "IDRC" ...}\cr
+#' @keywords datasets, data
+#' @examples
+#' data(DLBCL_overview)
+#' print(DLBCL_overview)
 NULL

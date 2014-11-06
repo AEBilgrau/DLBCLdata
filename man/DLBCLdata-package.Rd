@@ -6,12 +6,14 @@
 \alias{DLBCLdata-package}
 \alias{dlbcl}
 \alias{dlbcldata}
-\title{DLBCLdata: Diffuse Large B-cell Lymphoma data}
+\title{\pkg{DLBCLdata}: Diffuse Large B-cell Lymphoma data}
 \description{
 An R-package for reproducible and easily available datasets in DLBCL.
 }
 \examples{
-2+2 # FILL
+# Overview of the curated available data:
+data(DLBCL_overview)
+print(DLBCL_overview)
 }
 \author{
 Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
