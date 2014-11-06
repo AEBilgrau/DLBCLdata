@@ -30,7 +30,7 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
   # Download data
   if (verbose) cat("Downloading .CEL files...\n")
   dl.dir <- file.path(destdir, geo_nbr)
-  dir.create(dl.dir)
+  dir.create(dl.dir, showWarnings = FALSE)
   dl <- getGEOSuppFiles(GEO = geo_nbr, makeDirectory = FALSE, baseDir = dl.dir)
 
   # Untar the file bundle
@@ -56,5 +56,5 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
   }
 
   if (verbose) cat("Done.")
-  return(invisible(data.frame(cel.files, gz.files)))
+  return(invisible(data.frame(cel.files, gz.files, stringsAsFactors = FALSE)))
 }
