@@ -1,15 +1,16 @@
 #' Download GEO dataset
 #'
-#' Function for downloading a GEO dataset. Simply a wrapper for
-#' and \code{getGEOSuppFiles} which downloads and unzips the
-#' \code{.CEL} files in the GEO series.
+#' Function for downloading a GEO dataset and prepare it for preprocessing.
+#' The function uses \code{getGEOSuppFiles} which downloads the data. The
+#' function then unzips the data files in the GEO series.
 #'
 #' @param geo_nbr The GEO ascession number.
 #' @param destdir The destination dir of the downloaded files.
-#' @param verbose Signal the process.
 #' @param clean Should the strictly unnessesary files be deleted?
+#' @param verbose Signal the process.
 #' @note The function will overwrite existing files in the \code{destdir}.
-#' @author Anders Ellern Bilgrau,
+#' @author
+#'   Anders Ellern Bilgrau,
 #'   Steffen Falgreen Larsen
 #' @examples
 #' \dontrun{
@@ -19,8 +20,8 @@
 #' @export
 downloadAndPrepareGEOData <- function(geo_nbr,
                                       destdir = getwd(),
-                                      verbose = TRUE,
-                                      clean = TRUE) {
+                                      clean = TRUE,
+                                      verbose = TRUE) {
   stopifnot(require("GEOquery"))
   if (verbose) cat("Preparing GEO", geo_nbr, "data\n")
 

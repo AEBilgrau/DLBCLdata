@@ -3,7 +3,7 @@
 \name{DLBCL_overview}
 \alias{DLBCL_overview}
 \title{Overview of available DLBCL data}
-\format{A \code{data.frame} giving information about the DLBCL studies:\cr
+\format{A \code{data.frame} giving information about the DLBCL studies:\cr\cr
   \code{'data.frame':  11 obs. of  2 variables:} \cr
   \code{$ GSE  : chr  "GSE19246" "GSE12195" "GSE22895" "GSE31312" ...}\cr
   \code{$ Study: chr  "BCCA" "CUICG" "HMRC" "IDRC" ...}\cr}
