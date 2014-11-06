@@ -1,6 +1,7 @@
-#' Download GEO dataset
+#' Download GEO .CEL files
 #'
-#' Function for downloading a GEO dataset and prepare it for preprocessing.
+#' Function for downloading the CEL files of a GEO dataset and prepare it for
+#' preprocessing.
 #' The function uses \code{getGEOSuppFiles} which downloads the data. The
 #' function then unzips the data files in the GEO series.
 #'
