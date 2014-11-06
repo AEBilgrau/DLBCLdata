@@ -17,12 +17,12 @@
 #' downloadAndPrepareGEOData(geo_nbr = "GSE18376",
 #'                           destdir = tempdir())
 #' }
+#' @importFrom GEOquery getGEOSuppFiles
 #' @export
 downloadAndPrepareGEOData <- function(geo_nbr,
                                       destdir = getwd(),
                                       clean = TRUE,
                                       verbose = TRUE) {
-  stopifnot(require("GEOquery"))
   if (verbose) cat("Preparing GEO", geo_nbr, "data\n")
 
   # Download data

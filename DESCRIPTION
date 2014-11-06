@@ -7,8 +7,11 @@ Author: Anders Ellern Bilgrau, Steffen Falgreen Larsen
 Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>
 URL: http://github.com/AEBilgrau/DLBCLdata
 BugReports: https://github.com/AEBilgrau/DLBCLdata/issues
-Description: A collection of Large-Scale Diffuse Large B-Cell
+Description: Automatic download and preparation of selected
+    Large-Scale Diffuse Large B-Cell
     Lymphoma gene expression profile studies
+Depends:
+    GEOquery
 License: GPL (>=2)
 Suggests:
     testthat (>= 0.3)
