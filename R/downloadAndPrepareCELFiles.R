@@ -14,12 +14,12 @@
 #'   Steffen Falgreen Larsen
 #' @examples
 #' \dontrun{
-#' downloadAndPrepareGEOData(geo_nbr = "GSE18376",
+#' downloadAndPrepareCELFiles(geo_nbr = "GSE18376",
 #'                           destdir = tempdir())
 #' }
 #' @importFrom GEOquery getGEOSuppFiles
 #' @export
-downloadAndPrepareGEOData <- function(geo_nbr,
+downloadAndPrepareCELFiles <- function(geo_nbr,
                                       destdir = getwd(),
                                       clean = TRUE,
                                       verbose = TRUE) {
