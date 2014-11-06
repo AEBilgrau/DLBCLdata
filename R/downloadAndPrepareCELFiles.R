@@ -18,11 +18,12 @@
 #'                           destdir = tempdir())
 #' }
 #' @importFrom GEOquery getGEOSuppFiles
+#' @keywords internal
 #' @export
 downloadAndPrepareCELFiles <- function(geo_nbr,
-                                      destdir = getwd(),
-                                      clean = TRUE,
-                                      verbose = TRUE) {
+                                       destdir = getwd(),
+                                       clean = FALSE,
+                                       verbose = TRUE) {
   if (verbose) cat("Preparing GEO", geo_nbr, "data\n")
 
   # Download data
