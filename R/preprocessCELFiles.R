@@ -1,16 +1,25 @@
-
+#' RMA preprocess CEL files
+#'
+#' General function for RMA processing microarray data. Automatically downloads
+#' custom Brainarray chip definition files (cdf) if wanted.
+#'
+#' @param cel_files
+#' @param cdf
+#' @param target
+#' @param version
+#' @param backgroud
+#' @param normalize
+#' @return An expression set object.
 #' @importFrom affy read.affybatch
 #' @importFrom affyio read.celfile.header
 #' @export
-preprocessCELFiles <- function(cel_files = list.files(path, pattern = "\\CEL$",
-                                                  full.names = TRUE),
+preprocessCELFiles <- function(cel_files = list.files(path, pattern="\\CEL$"),
                                cdf = "affy",
                                target = c("core", "full", "feature"),
                                version = getLatestVersion(),
                                background = TRUE,
                                normalize = TRUE,
-                               path = getwd(),
-                               ...) {
+                               path = getwd()) {
   stopifnot(require("affyio"))
   cel_files <- normalizePath(cel_files)
   array_type <- read.celfile.header(cel_files[1])$cdfName
