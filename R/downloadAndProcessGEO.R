@@ -13,7 +13,7 @@
 #'   Steffen Falgreen Larsen
 #' @examples
 #' \dontrun{
-#' downloadAndProcessGEO(geo_nbr = "GSE18376")
+#' res <- downloadAndProcessGEO(geo_nbr = "GSE18376")
 #' }
 #' @export
 downloadAndProcessGEO <- function(geo_nbr,
@@ -23,11 +23,12 @@ downloadAndProcessGEO <- function(geo_nbr,
                                   verbose = TRUE) {
 
   # Download CEL data
-  downloadAndPrepareCELFiles(geo_nbr = geo_nbr, destdir = destdir,
-                             clean = clean, verbose = verbose)
+  dl <- downloadAndPrepareCELFiles(geo_nbr = geo_nbr, destdir = destdir,
+                                   clean = clean, verbose = verbose)
+
 
   # Preprocess CEL data by RMA
-  es <- preprocessCELFiles(...)
+  es <- preprocessCELFiles(dl$cel.files, ...)
 
   # Download meta data
   # ...
