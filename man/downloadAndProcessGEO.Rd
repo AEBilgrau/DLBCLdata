@@ -24,7 +24,7 @@ Does not return anything. Creates a folder with the downloaded and
 \description{
 Functionality for automatically downloading, RMA preprocessing the array
 data and formatting the phenotype data, and saving the results in a
-\code{.RData} file.
+\code{.Rds} file.
 }
 \note{
 The function will overwrite existing files in the \code{destdir}.

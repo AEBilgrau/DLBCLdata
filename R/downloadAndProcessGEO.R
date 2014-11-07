@@ -2,7 +2,7 @@
 #'
 #' Functionality for automatically downloading, RMA preprocessing the array
 #' data and formatting the phenotype data, and saving the results in a
-#' \code{.RData} file.
+#' \code{.Rds} file.
 #'
 #' @param geo_nbr The GEO ascession number.
 #' @param destdir The destination dir of the downloaded files.
@@ -25,21 +25,30 @@ downloadAndProcessGEO <- function(geo_nbr,
                                   ...,
                                   clean = FALSE,
                                   verbose = TRUE) {
-
-  # Download array data
-  cel_data <- downloadAndPrepareCELFiles(geo_nbr = geo_nbr, destdir = destdir,
-                                         clean = clean, verbose = verbose)
-
-  # Preprocess array data by RMA
-  es <- preprocessCELFiles(cel_data$cel_files, ...)
-
   # Download metadata
   meta_data <- downloadAndPrepareMetadata(geo_nbr = geo_nbr, destdir = destdir,
                                           clean = clean, verbose = verbose)
 
   # Process metadata
-  clean_meta_data <- cleanMetadata(meta_Data)
+  clean_meta_data <- cleanMetadata(meta_data)
 
+  # Download array data
+  cel_files <- downloadAndPrepareCELFiles(geo_nbr = geo_nbr, destdir = destdir,
+                                          clean = clean, verbose = verbose)
 
-  return(list(metadata = clean_meta_data, expressiondata = cel_data))
+  # Preprocess array data by RMA
+  es <- preprocessCELFiles(cel_files, ...)
+
+  # Save Rds file
+  a <- attributes(es)
+  file_name <- paste0(geo_nbr, "_", a$cdf,
+                      ifelse(is.null(a$target), "", paste0("_", a$target)),
+                      ifelse(a$cdf=="affy", "", paste0("_", version)), ".Rds")
+  output <- list(es = es, metadata = clean_meta_data, call = match.call())
+  saveRDS(output, file = file.path(destdir, geo_nbr, file_name))
+
+  # Clean if wanted
+  if (clean) rm(cel_files)
+  if (verbose) cat("done.\n")
+  return(invisible(output))
 }
