@@ -29,10 +29,13 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
   dl.dir <- file.path(destdir, geo_nbr)
 
   # Download data if nessesary
-  if (!file.exists(paste0(dl.dir, "_RAW.tar"))) {
+  raw_file <- paste0(file.path(dl.dir, geo_nbr), "_RAW.tar")
+  if (!file.exists(raw_file)) {
     if (verbose) cat("Downloading .CEL files...\n")
     dir.create(dl.dir, showWarnings = FALSE)
     getGEOSuppFiles(GEO = geo_nbr, makeDirectory = FALSE, baseDir = dl.dir)
+  } else {
+    if (verbose) cat("Compressed .CEL files already downloaded...\n")
   }
 
   # List celfiles (if any)
@@ -57,6 +60,8 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
     # List celfiles
     cel_files <- list.files(dl.dir, pattern = "\\.cel$",
                             ignore.case = TRUE, full.names = TRUE)
+  } else {
+    cat(".CEL files already unpacked...\n")
   }
 
   # Clean-up if wanted
