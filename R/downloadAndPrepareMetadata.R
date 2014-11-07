@@ -18,8 +18,7 @@
 #' @examples
 #' \dontrun{
 #' downloadAndPrepareCELFiles(geo_nbr = "GSE18376",
-#'                           destdir = tempdir())
-#' geo_nbr <- "GSE10846"
+#'                            destdir = tempdir())
 #' }
 #' @importFrom GEOquery getGEO
 #' @importFrom Biobase pData
@@ -31,13 +30,14 @@ downloadAndPrepareMetadata <- function(geo_nbr,
                                        verbose = TRUE) {
   if (verbose) cat("Preparing", geo_nbr, "metadata\n")
 
-  # Download data
+  # Download data if not already downloaded
   if (verbose) cat("Downloading files...\n")
   dl_dir <- file.path(destdir, geo_nbr)
   dir.create(dl_dir, showWarnings = FALSE)
   dl <- getGEO(GEO = geo_nbr, destdir = dl_dir,
                GSEMatrix = TRUE, getGPL = FALSE)
 
+  # Extract pheno data
   pd <- pData(dl[[1]])
   class(pd) <- c(geo_nbr, class(pd))
 

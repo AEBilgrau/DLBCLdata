@@ -31,8 +31,7 @@ The function will overwrite existing files in the \code{destdir}.
 \examples{
 \dontrun{
 downloadAndPrepareCELFiles(geo_nbr = "GSE18376",
-                          destdir = tempdir())
-geo_nbr <- "GSE10846"
+                           destdir = tempdir())
 }
 }
 \author{
