@@ -26,35 +26,46 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
                                        clean = FALSE,
                                        verbose = TRUE) {
   if (verbose) cat("Preparing GEO", geo_nbr, "data\n")
-
-  # Download data
-  if (verbose) cat("Downloading .CEL files...\n")
   dl.dir <- file.path(destdir, geo_nbr)
-  dir.create(dl.dir, showWarnings = FALSE)
-  dl <- getGEOSuppFiles(GEO = geo_nbr, makeDirectory = FALSE, baseDir = dl.dir)
 
-  # Untar the file bundle
-  if (verbose) cat("Untaring the RAW file...\n")
-  tar.file <- list.files(path = dl.dir, pattern = "RAW.tar$", full.names = TRUE)
-  exdir <- dl.dir
-  untar(tarfile = tar.file, exdir = exdir)
-
-  # Unzip the files
-  if (verbose) cat("Unzipping the .CEL files...\n")
-  gz_files <- list.files(exdir, pattern = "\\.gz$", ignore.case = TRUE,
-                         full.names = TRUE)
-  for (file in gz_files) {
-    gunzip(file, overwrite = TRUE, remove = TRUE)
+  # Download data if nessesary
+  if (!file.exists(paste0(dl.dir, "_RAW.tar"))) {
+    if (verbose) cat("Downloading .CEL files...\n")
+    dir.create(dl.dir, showWarnings = FALSE)
+    getGEOSuppFiles(GEO = geo_nbr, makeDirectory = FALSE, baseDir = dl.dir)
   }
-  cel_files <- list.files(exdir, pattern = "\\.cel$",
+
+  # List celfiles (if any)
+  cel_files <- list.files(dl.dir, pattern = "\\.cel$",
                           ignore.case = TRUE, full.names = TRUE)
+
+  if (identical(cel_files, character(0))) {
+
+    # Untar the file bundle
+    if (verbose) cat("Untaring the RAW file...\n")
+    tar.file <- list.files(path = dl.dir, pattern = "RAW.tar$", full.names = TRUE)
+    untar(tarfile = tar.file, exdir = dl.dir)
+
+    # Unzip the files
+    if (verbose) cat("Unzipping the .CEL files...\n")
+    gz_files <- list.files(dl.dir, pattern = "\\.cel.gz$", ignore.case = TRUE,
+                           full.names = TRUE)
+    for (file in gz_files) {
+      gunzip(file, overwrite = TRUE, remove = TRUE)
+    }
+
+    # List celfiles
+    cel_files <- list.files(dl.dir, pattern = "\\.cel$",
+                            ignore.case = TRUE, full.names = TRUE)
+  }
 
   # Clean-up if wanted
   if (clean) {
-    if (verbose) cat("Removing unnessary files...\n")
-    file.remove(rownames(dl))
+    if (verbose) cat("Removing all non CEL files...\n")
+    file.remove(setdiff(list.files(dl.dir, full.names = TRUE), cel_files))
   }
 
+  cel_files <- normalizePath(cel_files)
   if (verbose) cat("Done.")
-  return(invisible(data.frame(cel_files, gz_files, stringsAsFactors = FALSE)))
+  return(invisible(cel_files))
 }
