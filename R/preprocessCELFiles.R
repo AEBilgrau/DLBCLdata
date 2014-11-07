@@ -3,26 +3,28 @@
 #' General function for RMA processing microarray data. Automatically downloads
 #' custom Brainarray chip definition files (cdf) if wanted.
 #'
-#' @param cel_files
-#' @param cdf
+#' @param cel_files A character vector of .CEL files.
+#' @param cdf A character specifying the CDF (brainarray or affy).
 #' @param target
 #' @param version
 #' @param backgroud
 #' @param normalize
 #' @return An expression set object.
-#' @importFrom affy read.affybatch justRMA
+#' @importFrom affy read.affybatch just.rma
 #' @importFrom affyio read.celfile.header
 #' @importFrom oligo rma
 #' @export
-preprocessCELFiles <- function(cel_files = list.files(path, pattern="\\.CEL$"),
-                               cdf = "affy",
-                               target = c("core", "full", "feature"),
+preprocessCELFiles <- function(cel_files,
+                               cdf = c("affy", "brainarray"),
+                               target,
                                version = getLatestVersion(),
                                background = TRUE,
                                normalize = TRUE,
                                path = getwd()) {
-  cel_files <- normalizePath(cel_files)
   array_type <- read.celfile.header(cel_files[1])$cdfName
+  cel_files <- normalizePath(cel_files)
+  cdf <- match.arg(cdf)
+
 
   if (tolower(cdf) == "affy") {
     # Load expression set
@@ -30,7 +32,7 @@ preprocessCELFiles <- function(cel_files = list.files(path, pattern="\\.CEL$"),
 
     # RMA normalize
     if (class(es) %in% c("ExonFeatureSet","HTAFeatureSet","GeneFeatureSet")) {
-      target <- match.arg(target)
+      if (missing(target)) stop("No target provided.")
       es_rma <- oligo::rma(es, background = background,
                            normalize = normalize, target = target)
       attr(es_rma, "target") <- target
@@ -39,13 +41,19 @@ preprocessCELFiles <- function(cel_files = list.files(path, pattern="\\.CEL$"),
                            normalize = normalize)
       attr(es_rma, "target") <- NULL
     }
-  } else {
 
-    req <- requireBrainarray(array_type = array_type, custom_cdf = cdf,
+  } else {
+    if (missing(target)) stop("No target provided.")
+
+    req <- requireBrainarray(array_type = array_type,
+                             custom_cdf = target,
                              version = version)
-    es_rma <- justRMA(filenames = cel_files, verbose = TRUE,
-                      cdfname = getCustomCDFName(req$brain_dat, array_type))
-    attr(es_rma, "target") <- NULL
+    suppressWarnings({
+      es_rma <- just.rma(filenames = cel_files,
+                         verbose = TRUE,
+                         cdfname = getCustomCDFName(req$brain_dat, array_type))
+    })
+    attr(es_rma, "target") <- target
   }
 
   # Add attributes

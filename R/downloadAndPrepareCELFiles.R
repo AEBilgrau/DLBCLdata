@@ -71,6 +71,6 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
   }
 
   cel_files <- normalizePath(cel_files)
-  if (verbose) cat("Done.")
+  if (verbose) cat("Download and preparation of CEL files done.\n")
   return(invisible(cel_files))
 }

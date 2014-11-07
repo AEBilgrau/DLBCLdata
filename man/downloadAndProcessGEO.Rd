@@ -31,7 +31,9 @@ The function will overwrite existing files in the \code{destdir}.
 }
 \examples{
 \dontrun{
-res <- downloadAndProcessGEO(geo_nbr = "GSE18376")
+res <- downloadAndProcessGEO(geo_nbr = "GSE18376",
+                             cdf = "ensg")
+str(res, max.level = 1)
 }
 }
 \author{

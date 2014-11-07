@@ -3,15 +3,14 @@
 \alias{preprocessCELFiles}
 \title{RMA preprocess CEL files}
 \usage{
-preprocessCELFiles(cel_files = list.files(path, pattern = "\\\\.CEL$"),
-  cdf = "affy", target = c("core", "full", "feature"),
-  version = getLatestVersion(), background = TRUE, normalize = TRUE,
-  path = getwd())
+preprocessCELFiles(cel_files, cdf = c("affy", "brainarray"),
+  target = "core", version = getLatestVersion(), background = TRUE,
+  normalize = TRUE, path = getwd())
 }
 \arguments{
-\item{cel_files}{}
+\item{cel_files}{A character vector of .CEL files.}
 
-\item{cdf}{}
+\item{cdf}{A character specifying the CDF (brainarray or affy).}
 
 \item{target}{}
 

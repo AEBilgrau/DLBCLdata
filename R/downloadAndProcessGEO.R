@@ -17,7 +17,11 @@
 #'   Steffen Falgreen Larsen
 #' @examples
 #' \dontrun{
-#' res <- downloadAndProcessGEO(geo_nbr = "GSE18376")
+#' res <- downloadAndProcessGEO("GSE18376",
+#'                              cdf = "brainarray",
+#'                              target = "ENTREZG",
+#'                              clean = FALSE)
+#' str(res, max.level = 1)
 #' }
 #' @export
 downloadAndProcessGEO <- function(geo_nbr,
@@ -25,12 +29,14 @@ downloadAndProcessGEO <- function(geo_nbr,
                                   ...,
                                   clean = FALSE,
                                   verbose = TRUE) {
+
   # Download metadata
   meta_data <- downloadAndPrepareMetadata(geo_nbr = geo_nbr, destdir = destdir,
                                           clean = clean, verbose = verbose)
 
   # Process metadata
   clean_meta_data <- cleanMetadata(meta_data)
+
 
   # Download array data
   cel_files <- downloadAndPrepareCELFiles(geo_nbr = geo_nbr, destdir = destdir,
@@ -43,12 +49,15 @@ downloadAndProcessGEO <- function(geo_nbr,
   a <- attributes(es)
   file_name <- paste0(geo_nbr, "_", a$cdf,
                       ifelse(is.null(a$target), "", paste0("_", a$target)),
-                      ifelse(a$cdf=="affy", "", paste0("_", version)), ".Rds")
+                      ifelse(a$cdf=="affy", "", paste0("_", a$version)), ".Rds")
   output <- list(es = es, metadata = clean_meta_data, call = match.call())
   saveRDS(output, file = file.path(destdir, geo_nbr, file_name))
 
   # Clean if wanted
-  if (clean) rm(cel_files)
+  if (clean) file.remove(cel_files)
   if (verbose) cat("done.\n")
+
   return(invisible(output))
 }
+
+
