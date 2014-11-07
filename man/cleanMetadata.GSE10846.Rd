@@ -5,8 +5,13 @@
 \usage{
 \method{cleanMetadata}{GSE10846}(meta_data)
 }
+\arguments{
+\item{meta_data}{A \code{data.frame} as returned by
+\code{\link{downloadAndPreparemeta_data}}.}
+
+\item{A}{clean \code{data.frame}.}
+}
 \description{
 Specific function for cleaning GSE10846
 }
-\keyword{internal}
 

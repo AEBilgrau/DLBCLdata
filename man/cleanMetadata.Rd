@@ -6,6 +6,8 @@
 cleanMetadata(meta_data, ...)
 }
 \arguments{
+\item{meta_data}{Output from \code{downloadAndPrepareMetadata}.}
+
 \item{geo_nbr}{A \code{character} giving the GEO number.}
 }
 \value{
