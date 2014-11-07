@@ -3,7 +3,7 @@
 \alias{preprocessCELFiles}
 \title{RMA preprocess CEL files}
 \usage{
-preprocessCELFiles(cel_files = list.files(path, pattern = "\\\\CEL$"),
+preprocessCELFiles(cel_files = list.files(path, pattern = "\\\\.CEL$"),
   cdf = "affy", target = c("core", "full", "feature"),
   version = getLatestVersion(), background = TRUE, normalize = TRUE,
   path = getwd())
