@@ -18,7 +18,7 @@
 #' downloadAndPrepareCELFiles(geo_nbr = "GSE18376",
 #'                           destdir = tempdir())
 #' }
-#' @importFrom GEOquery getGEOSuppFiles
+#' @importFrom GEOquery getGEOSuppFiles gunzip
 #' @keywords internal
 #' @export
 downloadAndPrepareCELFiles <- function(geo_nbr,

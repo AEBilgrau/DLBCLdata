@@ -1,8 +1,7 @@
 
+#' @importFrom XML readHTMLTable
 #' @keywords internal
 readBrainarrayTable <- function(custom_cdf, version = getLatestVersion()) {
-  stopifnot(require("XML"))
-
   base_url <-
     paste0("http://brainarray.mbni.med.umich.edu/Brainarray/Database/",
            "CustomCDF/", version, "/" , custom_cdf)

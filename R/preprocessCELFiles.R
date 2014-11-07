@@ -10,8 +10,9 @@
 #' @param backgroud
 #' @param normalize
 #' @return An expression set object.
-#' @importFrom affy read.affybatch
+#' @importFrom affy read.affybatch justRMA
 #' @importFrom affyio read.celfile.header
+#' @importFrom oligo rma
 #' @export
 preprocessCELFiles <- function(cel_files = list.files(path, pattern="\\CEL$"),
                                cdf = "affy",
@@ -20,12 +21,10 @@ preprocessCELFiles <- function(cel_files = list.files(path, pattern="\\CEL$"),
                                background = TRUE,
                                normalize = TRUE,
                                path = getwd()) {
-  stopifnot(require("affyio"))
   cel_files <- normalizePath(cel_files)
   array_type <- read.celfile.header(cel_files[1])$cdfName
 
   if (tolower(cdf) == "affy") {
-    stopifnot(require("oligo"))
     target <- match.arg(target)
 
     # Load expression set
@@ -41,11 +40,12 @@ preprocessCELFiles <- function(cel_files = list.files(path, pattern="\\CEL$"),
     }
 
   } else {
-    stopifnot(require("affy"))
+
     req <- requireBrainarray(array_type = array_type, custom_cdf = cdf,
                              version = version)
     es_rma <- justRMA(filenames = cel_files, verbose = TRUE,
                       cdfname = getCustomCDFName(req$brain_dat, array_type))
+
   }
   return(es_rma)
 }
