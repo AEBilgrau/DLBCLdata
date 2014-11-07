@@ -17,8 +17,14 @@ downloadAndProcessGEO(geo_nbr, destdir = getwd(), ..., clean = FALSE,
 
 \item{verbose}{Signal the process.}
 }
+\value{
+Does not return anything. Creates a folder with the downloaded and
+  processed files.
+}
 \description{
-Functionality for downloading a GEO dataset and preprocess it.
+Functionality for automatically downloading, RMA preprocessing the array
+data and formatting the phenotype data, and saving the results in a
+\code{.RData} file.
 }
 \note{
 The function will overwrite existing files in the \code{destdir}.

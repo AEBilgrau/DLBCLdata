@@ -41,12 +41,12 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
 
   # Unzip the files
   if (verbose) cat("Unzipping the .CEL files...\n")
-  gz.files <- list.files(exdir, pattern = "\\.gz$", ignore.case = TRUE,
+  gz_files <- list.files(exdir, pattern = "\\.gz$", ignore.case = TRUE,
                          full.names = TRUE)
-  for (file in gz.files) {
+  for (file in gz_files) {
     gunzip(file, overwrite = TRUE, remove = TRUE)
   }
-  cel.files <- list.files(exdir, pattern = "\\.cel$",
+  cel_files <- list.files(exdir, pattern = "\\.cel$",
                           ignore.case = TRUE, full.names = TRUE)
 
   # Clean-up if wanted
@@ -56,5 +56,5 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
   }
 
   if (verbose) cat("Done.")
-  return(invisible(data.frame(cel.files, gz.files, stringsAsFactors = FALSE)))
+  return(invisible(data.frame(cel_files, gz_files, stringsAsFactors = FALSE)))
 }

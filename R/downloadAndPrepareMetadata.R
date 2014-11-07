@@ -39,6 +39,7 @@ downloadAndPrepareMetadata <- function(geo_nbr,
                GSEMatrix = TRUE, getGPL = FALSE)
 
   pd <- pData(dl[[1]])
+  class(pd) <- c(geo_nbr, class(pd))
 
   # Clean-up if wanted
   if (clean) {
