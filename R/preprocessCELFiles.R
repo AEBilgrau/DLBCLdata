@@ -42,7 +42,7 @@ preprocessCELFiles <- function(cel_files,
       attr(es_rma, "target") <- NULL
     }
 
-  } else {
+  } else if (tolower(cdf) == "brainarray") {
     if (missing(target)) stop("No target provided.")
 
     req <- requireBrainarray(array_type = array_type,
@@ -54,6 +54,9 @@ preprocessCELFiles <- function(cel_files,
                          cdfname = getCustomCDFName(req$brain_dat, array_type))
     })
     attr(es_rma, "target") <- target
+
+  } else {
+    stop("cdf == '", cdf, "' not supported. Should be either 'affy' or 'brainarray'")
   }
 
   # Add attributes
