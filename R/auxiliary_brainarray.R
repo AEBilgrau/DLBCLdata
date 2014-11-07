@@ -1,9 +1,11 @@
-#' @keywords internal
 cleanName <- function(array_type) {
   gsub("[-_]", "", tolower(array_type))
 }
 
-#' @keywords internal
+getSubversion <- function(version, n) {
+  return(as.numeric(unlist(strsplit(version, "\\.")))[n])
+}
+
 arrayToBrainarrayName <- function(array_type) {
   ans <- switch(array_type,
                 "HuGene-1_0-st-v1" = "hugene10st",
@@ -27,7 +29,6 @@ getBrainarrayPackages <- function(brain_dat, array_type) {
   return(r_packages)
 }
 
-version <- "18.0.0"
 
 #' @importFrom XML readHTMLTable
 getBrainarrayTargets <- function(version) {
@@ -41,7 +42,7 @@ getBrainarrayTargets <- function(version) {
   if (missing(version)) {
     ans <- as.character(brain_dat[[length(brain_dat)]][["Custom CDF"]])
   } else {
-    v <- as.numeric(gsub("(^[0-9]+)\\..+$", "\\1", version))
+    v <- getSubversion(version, n = 2)
     ans <- as.character(brain_dat[[v]][["Custom CDF"]])
   }
   return(ans)

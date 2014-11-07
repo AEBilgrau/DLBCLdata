@@ -19,7 +19,7 @@
 #' \dontrun{
 #' res <- downloadAndProcessGEO("GSE18376",
 #'                              cdf = "brainarray",
-#'                              target = "ENTREZG",
+#'                              target = "ENSG",
 #'                              clean = FALSE)
 #' str(res, max.level = 1)
 #' }
