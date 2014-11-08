@@ -21,6 +21,10 @@
 #'                              cdf = "brainarray",
 #'                              target = "ENSG",
 #'                              clean = FALSE)
+#' res2 <- downloadAndProcessGEO("GSE10846",
+#'                              cdf = "brainarray",
+#'                              target = "ENSG",
+#'                              clean = FALSE)
 #' str(res, max.level = 1)
 #' }
 #' @export

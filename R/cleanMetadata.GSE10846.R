@@ -6,7 +6,42 @@
 cleanMetadata.GSE10846 <- function(meta_data) {
   message("Cleaning GSE10846!")
 
-  # Helper function
+  stopifnot(require(survival))
+
+  # Helper functions
+  wo.na <- function(x) sum(x[!is.na(x)])
+  n.is.na <- function(x) sum(is.na(x))
+  IPI <- function(age, ECOG, stage, No.Extra.Nodal, LDH) {
+    a <- ifelse(age            >  60, 1, 0)
+    b <- ifelse(ECOG           >   1, 1, 0)
+    c <- ifelse(No.Extra.Nodal >=  2, 1, 0)
+    d <- ifelse(stage          >   2, 1, 0)
+    e <- ifelse(LDH            >   1, 1, 0)
+
+    ipi <- data.frame(a = a, b = b, c = c, d = d, e = e)
+    score  <- apply(ipi, 1, sum)
+    score2 <- apply(ipi, 1, wo.na)
+    n.NA   <- apply(ipi, 1, n.is.na) == 1
+    n.NA2  <- apply(ipi, 1, n.is.na) == 2
+
+    ipi.hl <- rep(NA, length(n.NA))
+    ipi.hl[score %in% c(0, 1, 2)] <- 0
+    ipi.hl[score %in% c(3, 4, 5)] <- 1
+
+
+    ipi.hl2 <- rep(NA, length(n.NA))
+    ipi.hl2[score2 %in% c(0, 1, 2)] <- 0
+    ipi.hl2[score2 %in% c(3, 4, 5)] <- 1
+
+
+    ipi.hl[n.NA & score2 %in% c(0, 1, 3, 4) ] <-
+      ipi.hl2[n.NA & score2 %in% c(0, 1, 3, 4) ]
+
+    ipi.hl[n.NA2 & score2 %in% c(0, 3) ] <-
+      ipi.hl2[n.NA2 & score2 %in% c(0, 3) ]
+
+    return(list(ipi = score, ipi.hl = ipi.hl, na.1 = n.NA, ipi.na = score2))
+  }
   cleanUp <- function(x){
     x <- as.character(x)
     x.list <- strsplit(x, ":")
