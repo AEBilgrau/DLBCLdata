@@ -12,6 +12,7 @@ cleanMetadata <- function(meta_data, ...) {
 
 #' @export
 cleanMetadata.default <- function(meta_data) {
+  stopifnot(is.data.frame(meta_data))
   message("No specific cleaning function was found for ", class(meta_data)[1],
           ". No cleanup was done!", sep = "")
   return(meta_data)
