@@ -21,10 +21,14 @@ preprocessCELFiles <- function(cel_files,
                                background = TRUE,
                                normalize = TRUE,
                                path = getwd()) {
-  array_type <- read.celfile.header(cel_files[1])$cdfName
+  getCDF <- function(file) {
+    return(read.celfile.header(file)$cdfName)
+  }
+  array_type <- sapply(cel_files, getCDF)
+  stopifnot(length(unique(array_type)) == 1)
+  array_type <- array_type[1]
   cel_files <- normalizePath(cel_files)
   cdf <- match.arg(cdf)
-
 
   if (tolower(cdf) == "affy") {
     # Load expression set
