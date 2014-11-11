@@ -83,68 +83,66 @@ cleanMetadata.GSE10846 <- function(meta_data) {
   LDH    <- gsub("Clinical info: LDH ratio: ",
                  "", meta_data$characteristics_ch1.12)
 
-  No.Extra.Nodal       <- gsub("Clinical info: Number of extranodal sites: ",
-                               "", meta_data$characteristics_ch1.13)
+  No.Extra.Nodal <- gsub("Clinical info: Number of extranodal sites: ",
+                         "", meta_data$characteristics_ch1.13)
 
 
-  meta_dataLLMPP <- data.frame(id, GEO.ID, gender, as.numeric(age), status,
+  metadataLLMPP <- data.frame(id, GEO.ID, gender, as.numeric(age), status,
                               FU, chemo, tissue,
                               disease.state, Submitting.diagnosis,
                               microarray.diagnosis, ECOG, stage, LDH,
                               No.Extra.Nodal = No.Extra.Nodal)
 
-  colnames(meta_dataLLMPP) <- c("id", "GEO.ID", "gender", "age",
+  colnames(metadataLLMPP) <- c("id", "GEO.ID", "gender", "age",
                                "survival.status", "FU", "chemo", "tissue",
                                "disease.state", "Submitting.diagnosis",
                                "microarray.diagnosis", "ECOG", "stage",
                                "LDH", "No.Extra.Nodal")
 
-  meta_dataLLMPP$FU <- as.numeric(as.character(meta_dataLLMPP$FU))
-  meta_dataLLMPP$stage <- as.numeric(as.character(meta_dataLLMPP$stage))
-  meta_dataLLMPP$age   <- as.numeric(as.character(meta_dataLLMPP$age))
-  meta_dataLLMPP$No.Extra.Nodal <- as.numeric(as.character(meta_dataLLMPP$No.Extra.Nodal))
-  meta_dataLLMPP$ECOG <- as.numeric(as.character(meta_dataLLMPP$ECOG))
-  meta_dataLLMPP$LDH  <- as.numeric(as.character(meta_dataLLMPP$LDH))
-  ipi <- IPI(meta_dataLLMPP$age,   meta_dataLLMPP$ECOG,
-             meta_dataLLMPP$stage, meta_dataLLMPP$No.Extra.Nodal,
-             meta_dataLLMPP$LDH)
+  metadataLLMPP$FU <- as.numeric(as.character(metadataLLMPP$FU))
+  metadataLLMPP$stage <- as.numeric(as.character(metadataLLMPP$stage))
+  metadataLLMPP$age   <- as.numeric(as.character(metadataLLMPP$age))
+  metadataLLMPP$No.Extra.Nodal <- as.numeric(as.character(metadataLLMPP$No.Extra.Nodal))
+  metadataLLMPP$ECOG <- as.numeric(as.character(metadataLLMPP$ECOG))
+  metadataLLMPP$LDH  <- as.numeric(as.character(metadataLLMPP$LDH))
+  ipi <- IPI(metadataLLMPP$age,   metadataLLMPP$ECOG,
+             metadataLLMPP$stage, metadataLLMPP$No.Extra.Nodal,
+             metadataLLMPP$LDH)
 
-  meta_dataLLMPP$ipi    <- as.factor(ipi$ipi)
-  meta_dataLLMPP$ipi.hl <- as.factor(ipi$ipi.hl)
+  metadataLLMPP$ipi    <- as.factor(ipi$ipi)
+  metadataLLMPP$ipi.hl <- as.factor(ipi$ipi.hl)
 
-  meta_dataLLMPP$ipi.hl <- as.character(meta_dataLLMPP$ipi)
-  meta_dataLLMPP$ipi.hl[meta_dataLLMPP$ipi %in% c(0, 1)] <- "0-1"
-  meta_dataLLMPP$ipi.hl[meta_dataLLMPP$ipi %in% c(2, 3)] <- "2-3"
-  meta_dataLLMPP$ipi.hl[meta_dataLLMPP$ipi %in% c(4, 5)] <- "4-5"
+  metadataLLMPP$ipi.hl <- as.character(metadataLLMPP$ipi)
+  metadataLLMPP$ipi.hl[metadataLLMPP$ipi %in% c(0, 1)] <- "0-1"
+  metadataLLMPP$ipi.hl[metadataLLMPP$ipi %in% c(2, 3)] <- "2-3"
+  metadataLLMPP$ipi.hl[metadataLLMPP$ipi %in% c(4, 5)] <- "4-5"
 
-  meta_dataLLMPP$ipi.hl2 <- meta_dataLLMPP$ipi.hl
+  metadataLLMPP$ipi.hl2 <- metadataLLMPP$ipi.hl
 
-  meta_dataLLMPP$ipi.hl2[ipi$ipi.na == 0 & ipi$na.1] <- "0-1"
-  meta_dataLLMPP$ipi.hl2[ipi$ipi.na == 2 & ipi$na.1] <- "2-3"
-  meta_dataLLMPP$ipi.hl2[ipi$ipi.na == 4 & ipi$na.1] <- "4-5"
-
-
-  table(w.na = meta_dataLLMPP$ipi.hl2, wo.na = meta_dataLLMPP$ipi.hl, useNA="ifany")
-
+  metadataLLMPP$ipi.hl2[ipi$ipi.na == 0 & ipi$na.1] <- "0-1"
+  metadataLLMPP$ipi.hl2[ipi$ipi.na == 2 & ipi$na.1] <- "2-3"
+  metadataLLMPP$ipi.hl2[ipi$ipi.na == 4 & ipi$na.1] <- "4-5"
 
   # Creating survival objects
-  meta_dataLLMPP$OS <- Surv(meta_dataLLMPP$FU,
-                           meta_dataLLMPP$survival.status == "DEAD")
+  metadataLLMPP$OS <- Surv(metadataLLMPP$FU,
+                            metadataLLMPP$survival.status == "DEAD")
 
-  os5  <- ifelse(meta_dataLLMPP$FU > 5, 5, meta_dataLLMPP$FU)
-  ios5 <- pmin(ifelse(meta_dataLLMPP$FU > 5, 0, 1), meta_dataLLMPP$OS[,2])
+  os5  <- ifelse(metadataLLMPP$FU > 5, 5, metadataLLMPP$FU)
+  ios5 <- pmin(ifelse(metadataLLMPP$FU > 5, 0, 1), metadataLLMPP$OS[,2])
 
-  meta_dataLLMPP$OS5  <- Surv(as.numeric(os5), ios5)
+  metadataLLMPP$OS5  <- Surv(as.numeric(os5), ios5)
 
-  meta_dataLLMPP$WrightClass  <- meta_dataLLMPP$microarray.diagnosis
-  meta_dataLLMPP$WrightClass2 <- as.character(meta_dataLLMPP$WrightClass)
-  meta_dataLLMPP$WrightClass2 <-
-    as.factor(gsub("Unclassified", "UC", meta_dataLLMPP$WrightClass2))
+  metadataLLMPP$WrightClass  <- metadataLLMPP$microarray.diagnosis
+  metadataLLMPP$WrightClass2 <- as.character(metadataLLMPP$WrightClass)
+  metadataLLMPP$WrightClass2 <-
+    as.factor(gsub("Unclassified", "UC", metadataLLMPP$WrightClass2))
 
+  rownames(metadataLLMPP) <- paste(metadataLLMPP$GEO.ID, ".CEL",sep = "")
 
-  row.names(meta_dataLLMPP) <- paste(meta_dataLLMPP$GEO.ID, ".CEL",sep = "")
+  # Added factor describing the batches and CEL files
+  metadataLLMPP$Batch <- as.factor(metadataLLMPP$chemo)
+  metadataLLMPP$CEL   <- rownames(metadataLLMPP)
+  metadataLLMPP$GSM   <- as.character(metadataLLMPP$GEO.ID)
 
-  clean_meta_data <- meta_dataLLMPP
-
-  return(clean_meta_data)
+  return(metadataLLMPP)
 }
