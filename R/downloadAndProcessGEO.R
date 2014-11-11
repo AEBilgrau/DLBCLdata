@@ -25,6 +25,14 @@
 #'                              cdf = "brainarray",
 #'                              target = "ENSG",
 #'                              clean = FALSE)
+#'  ress <- list()
+#' for (gse in DLBCL_overview$GSE) {
+#'    ress[[gse]] <- downloadAndProcessGEO(gse,
+#'                              cdf = "brainarray",
+#'                              target = "ENSG",
+#'                              clean = FALSE)
+#' }
+#'
 #' str(res, max.level = 1)
 #' }
 #' @export
