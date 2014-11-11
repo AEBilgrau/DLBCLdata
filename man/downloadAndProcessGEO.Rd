@@ -18,8 +18,10 @@ downloadAndProcessGEO(geo_nbr, destdir = getwd(), ..., clean = FALSE,
 \item{verbose}{Signal the process.}
 }
 \value{
-Does not return anything. Creates a folder with the downloaded and
-  processed files.
+Creates a folder with the downloaded and processed files.
+  The processed files are saved as an \code{.Rds} object named
+  after the used parameters.
+  Invisibly returns the saved object.
 }
 \description{
 Functionality for automatically downloading, RMA preprocessing the array
@@ -31,14 +33,21 @@ The function will overwrite existing files in the \code{destdir}.
 }
 \examples{
 \dontrun{
-res <- downloadAndProcessGEO("GSE18376",
+res <- downloadAndProcessGEO(geo_nbr = "GSE18376",
                              cdf = "brainarray",
                              target = "ENSG",
                              clean = FALSE)
-res2 <- downloadAndProcessGEO("GSE10846",
+res2 <- downloadAndProcessGEO(geo_nbr = "GSE10846",
+                              cdf = "brainarray",
+                              target = "ENSG",
+                              clean = FALSE)
+for (gse in DLBCL_overview$GSE) {
+   ress[[gse]] <- downloadAndProcessGEO(gse,
                              cdf = "brainarray",
                              target = "ENSG",
                              clean = FALSE)
+}
+
 str(res, max.level = 1)
 }
 }
