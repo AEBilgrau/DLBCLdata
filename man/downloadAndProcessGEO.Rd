@@ -37,10 +37,14 @@ res <- downloadAndProcessGEO(geo_nbr = "GSE18376",
                              cdf = "brainarray",
                              target = "ENSG",
                              clean = FALSE)
+
 res2 <- downloadAndProcessGEO(geo_nbr = "GSE10846",
                               cdf = "brainarray",
                               target = "ENSG",
                               clean = FALSE)
+geo_nbr <-  DLBCL_overview[1,1]
+res2 <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
+                              target = "ENSG", clean = FALSE)
 for (gse in DLBCL_overview$GSE) {
    ress[[gse]] <- downloadAndProcessGEO(gse,
                              cdf = "brainarray",

@@ -24,10 +24,17 @@
 #'                              cdf = "brainarray",
 #'                              target = "ENSG",
 #'                              clean = FALSE)
+#'
 #' res2 <- downloadAndProcessGEO(geo_nbr = "GSE10846",
 #'                               cdf = "brainarray",
 #'                               target = "ENSG",
 #'                               clean = FALSE)
+#'
+#' data(DLBCL_overview)
+#' geo_nbr <-  DLBCL_overview[1,1]
+#' res2 <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
+#'                               target = "ENSG", clean = FALSE)
+#'
 #' for (gse in DLBCL_overview$GSE) {
 #'    ress[[gse]] <- downloadAndProcessGEO(gse,
 #'                              cdf = "brainarray",
@@ -51,14 +58,14 @@ downloadAndProcessGEO <- function(geo_nbr,
   # Process metadata
   clean_meta_data <- cleanMetadata(meta_data)
 
-
   # Download array data
   cel_files <- downloadAndPrepareCELFiles(geo_nbr = geo_nbr, destdir = destdir,
                                           clean = clean, verbose = verbose)
 
+  GSM <- gsub("\\.cel$", "", rownames(clean_meta_data), ignore.case = TRUE)
+
   # Add filenames to cleaned data
-  clean_meta_data$file <-
-    cel_files[match(clean_meta_data$GSM, basenameSansCEL(cel_files))]
+  clean_meta_data$file <- cel_files[match(GSM, basenameSansCEL(cel_files))]
   stopifnot(all(basenameSansCEL(clean_meta_data$file) == clean_meta_data$GSM))
 
   # Checks and warnings
@@ -68,18 +75,18 @@ downloadAndProcessGEO <- function(geo_nbr,
             ") does not equal the number of cel files (",
             length(cel_files), ")")
   }
-  CEL <- clean_meta_data$CEL
-  if (!all(basenameSansCEL(cel_files) %in% basenameSansCEL(CEL))) {
+
+  if (!all(basenameSansCEL(cel_files) %in% GSM)) {
     warning("Not all downloaded CEL files are in the metadata")
   }
-  if (!all(basenameSansCEL(CEL) %in% basenameSansCEL(cel_files))) {
+  if (!all(GSM %in% basenameSansCEL(cel_files))) {
     warning("Not all GSM numbers in the metadata have CEL files")
   }
 
-
   # Preprocess array data by RMA for each batch
-  if (is.null(clean_meta_data$Batch) && is.null(clean_meta_data$CEL)) {
+  if (is.null(clean_meta_data$Batch)) {
     es <- preprocessCELFiles(cel_files, ...)
+    #es <- preprocessCELFiles(cel_files, cdf = "brainarray", target = "ENSG")
   } else {
     if (verbose) {
       message("Batches detected. RMA normalizing each of the batches: ",
