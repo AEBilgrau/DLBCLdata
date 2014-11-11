@@ -63,14 +63,19 @@ downloadAndProcessGEO <- function(geo_nbr,
 
   # Checks and warnings
   if (nrow(clean_meta_data) != length(cel_files)) {
-    warning("The number of subjects in the metadata (", nrow(clean_meta_data),
+    warning("In ", geo_nbr, ". ",
+            "The number of subjects in the metadata (", nrow(clean_meta_data),
             ") does not equal the number of cel files (",
-            length(cel_files), "). Only using the files in the metadata.")
+            length(cel_files), ")")
   }
-  if (!all(basenameSansCEL(cel_files) %in%
-             basenameSansCEL(clean_meta_data$CEL))) {
-    warning("For ", geo_nbr, " not all downloaded CEL files are in the metadata")
+  CEL <- clean_meta_data$CEL
+  if (!all(basenameSansCEL(cel_files) %in% basenameSansCEL(CEL))) {
+    warning("Not all downloaded CEL files are in the metadata")
   }
+  if (!all(basenameSansCEL(CEL) %in% basenameSansCEL(cel_files))) {
+    warning("Not all GSM numbers in the metadata have CEL files")
+  }
+
 
   # Preprocess array data by RMA for each batch
   if (is.null(clean_meta_data$Batch) && is.null(clean_meta_data$CEL)) {
