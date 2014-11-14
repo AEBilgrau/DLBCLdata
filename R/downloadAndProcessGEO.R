@@ -20,29 +20,10 @@
 #'   Steffen Falgreen Larsen
 #' @examples
 #' \dontrun{
-#' res <- downloadAndProcessGEO(geo_nbr = "GSE18376",
-#'                              cdf = "brainarray",
-#'                              target = "ENSG",
-#'                              clean = FALSE)
-#'
-#' res2 <- downloadAndProcessGEO(geo_nbr = "GSE10846",
-#'                               cdf = "brainarray",
-#'                               target = "ENSG",
-#'                               clean = FALSE)
-#'
 #' data(DLBCL_overview)
-#' geo_nbr <-  DLBCL_overview[1,1]
-#' res2 <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
-#'                               target = "ENSG", clean = FALSE)
-#'
-#' for (gse in DLBCL_overview$GSE) {
-#'    ress[[gse]] <- downloadAndProcessGEO(gse,
-#'                              cdf = "brainarray",
-#'                              target = "ENSG",
-#'                              clean = FALSE)
-#' }
-#'
-#' str(res, max.level = 1)
+#' geo_nbr <-  DLBCL_overview[6,1]
+#' res <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
+#'                              target = "ENSG", clean = FALSE)
 #' }
 #' @export
 downloadAndProcessGEO <- function(geo_nbr,
