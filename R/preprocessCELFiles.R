@@ -25,7 +25,11 @@ preprocessCELFiles <- function(cel_files,
     return(read.celfile.header(file)$cdfName)
   }
   array_type <- sapply(cel_files, getCDF)
-  stopifnot(length(unique(array_type)) == 1)
+  array_types <- unique(array_type)
+  if (length(array_types) != 1) {
+    stop("The CEL files are from more that one array platform. The unique ",
+         "platforms are: ", paste(array_types, collapse = ", "))
+  }
   array_type <- array_type[1]
   cel_files <- normalizePath(cel_files)
   cdf <- match.arg(cdf)
