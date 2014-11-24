@@ -42,13 +42,6 @@ cleanMetadata.GSE10846 <- function(meta_data) {
 
     return(list(ipi = score, ipi.hl = ipi.hl, na.1 = n.NA, ipi.na = score2))
   }
-  cleanUp <- function(x){
-    x <- as.character(x)
-    x.list <- strsplit(x, ":")
-    l <- length(x.list[[1]])
-    x.mat <- t(do.call(cbind, x.list))
-    gsub(" ", "", x.mat)[, l]
-  }
 
   meta_data <- apply(meta_data, 2, as.character)
   meta_data <- as.data.frame(meta_data[1:414, ], stringsAsFactors = FALSE)
