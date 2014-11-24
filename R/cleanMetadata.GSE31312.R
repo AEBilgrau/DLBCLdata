@@ -8,7 +8,8 @@ cleanMetadata.GSE31312 <- function (meta_data) {
   message("Cleaning GSE31312!")
   stopifnot(inherits(meta_data, "data.frame"))
 
-  meta_data <- cleanMetadata.data.frame(meta_data)
+  # Generic clean
+  suppressMessages(meta_data <- cleanMetadata.data.frame(meta_data))
 
   # Added factor describing the batches and CEL files
   exclude <- c("GSM776068", "GSM776149")
