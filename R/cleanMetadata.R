@@ -1,17 +1,21 @@
 #' Generic metadata cleaning function
 #'
 #' S3 method dispatch giving the custom functions for formatting datasets.
+#' The function \code{downloadAndPrepareMetadata} adds a class \code{"GSEXXXX"}
+#' of the GEO number in question.
+#' The generic looks for functions of the name \code{cleanMetadata.GSEXXXX} and
+#' specific for that dataset and cleans metadata using that function.
 #'
 #' @param meta_data Output from \code{downloadAndPrepareMetadata}.
-#' @param geo_nbr A \code{character} giving the GEO number.
-#' @return Returns a function that will clean the given GEO dataset.
-#' @keywords internal
-cleanMetadata <- function(meta_data, ...) {
+#' @return Returns a function that will clean the given GEO dataset
+#' @author Anders Ellern Bilgrau, Steffen Falgreen Larsen
+#' @rdname cleanMetadata
+cleanMetadata <- function(meta_data) {
   UseMethod("cleanMetadata")
 }
 
-#' @export
-cleanMetadata.default <- function(meta_data) {
+#' @rdname cleanMetadata
+cleanMetadata.data.frame <- function(meta_data) {
   stopifnot(is.data.frame(meta_data))
   message("No specific cleaning function was found for ", class(meta_data)[1],
           ". No cleanup was done!", sep = "")
