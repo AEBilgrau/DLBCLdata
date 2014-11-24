@@ -22,6 +22,9 @@ This package downloads, installs, and/or loads the brainarray CDF and probe
 enviroments from the Brainarray website.
 }
 \examples{
+tmp.path <- requireBrainarray("hgu133a", custom_cdf = "enst",
+                              version = "18.0.0")
+print(tmp.path)
 tmp.path <- requireBrainarray("hgu133a", custom_cdf = "enst")
 print(tmp.path)
 }

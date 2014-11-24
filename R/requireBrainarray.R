@@ -15,6 +15,9 @@
 #' @references
 #'   See \url{http://brainarray.mbni.med.umich.edu}.
 #' @examples
+#' tmp.path <- requireBrainarray("hgu133a", custom_cdf = "enst",
+#'                               version = "18.0.0")
+#' print(tmp.path)
 #' tmp.path <- requireBrainarray("hgu133a", custom_cdf = "enst")
 #' print(tmp.path)
 #' @export
