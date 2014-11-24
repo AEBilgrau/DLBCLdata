@@ -28,7 +28,8 @@ preprocessCELFiles <- function(cel_files,
   array_types <- unique(array_type)
   if (length(array_types) != 1) {
     stop("The CEL files are from more that one array platform. The unique ",
-         "platforms are: ", paste(array_types, collapse = ", "))
+         "platforms are: ", paste(array_types, collapse = ", "),
+         ". The arrays should be preprocessed in batches of array platforms.")
   }
   array_type <- array_type[1]
   cel_files <- normalizePath(cel_files)
@@ -64,7 +65,8 @@ preprocessCELFiles <- function(cel_files,
     attr(es_rma, "target") <- target
 
   } else {
-    stop("cdf == '", cdf, "' not supported. Should be either 'affy' or 'brainarray'")
+    stop("cdf == '", cdf,
+         "' not supported. Should be either 'affy' or 'brainarray'")
   }
 
   # Add attributes
