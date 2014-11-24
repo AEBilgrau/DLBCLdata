@@ -1,5 +1,8 @@
 #' Reads table from brainarray homepage
 #'
+#' @param custom_cdf A string giving the "target" to use.
+#' @param version A string giving the version.
+#' @return A \code{data.frame} of the info on the relevant brainarray webpage.
 #' @examples
 #' readBrainarrayTable("ENSG", version = "17.0.0")[1:10, 1:10]
 #' readBrainarrayTable("ENST", version = "18.0.0")[1:10, 1:10]
@@ -7,6 +10,7 @@
 #' readBrainarrayTable("ENSG")[1:10, 1:10]
 #' @importFrom XML readHTMLTable
 #' @keywords internal
+#' @export
 readBrainarrayTable <- function(custom_cdf, version = getLatestVersion()) {
   base_url <-
     paste0("http://brainarray.mbni.med.umich.edu/Brainarray/Database/",
@@ -16,7 +20,7 @@ readBrainarrayTable <- function(custom_cdf, version = getLatestVersion()) {
                              stringsAsFactors = FALSE)[[2]]
 
   # Remove first row if the same as rownames
-  if (rownames(brain_dat) == brain_dat[, 1]) {
+  if (all(rownames(brain_dat) == brain_dat[, 1])) {
     brain_dat <- brain_dat[, -1]
   }
   colnames(brain_dat) <-
