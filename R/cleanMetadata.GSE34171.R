@@ -1,5 +1,6 @@
 
 cleanMetadata.GSE34171 <- function(meta_data) {
+  message("Cleaning GSE34171")
 
   metadataMDFCI_Clinical <-
     read.table(file=file.path(MDFCI.ext.dir, "../RawData", "Metadata",
