@@ -10,17 +10,19 @@
 #' @return Returns a function that will clean the given GEO dataset
 #' @author Anders Ellern Bilgrau, Steffen Falgreen Larsen
 #' @rdname cleanMetadata
+#' @export
 cleanMetadata <- function(meta_data) {
   UseMethod("cleanMetadata")
 }
 
 #' @rdname cleanMetadata
+#' @export
 cleanMetadata.data.frame <- function(meta_data) {
-  stopifnot(is.data.frame(meta_data))
   message("No specific cleaning function was found for ", class(meta_data)[1],
           ". No cleanup was done!", sep = "")
   return(meta_data)
 }
+
 
 # ALTERNATIVE SYSTEM:
 # cleanMetadata <- function(meta_data, geo_nbr, list_of_extra_args) {
