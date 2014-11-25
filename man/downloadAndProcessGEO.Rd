@@ -34,9 +34,10 @@ The function will overwrite existing files in the \code{destdir}.
 \examples{
 \dontrun{
 data(DLBCL_overview)
-geo_nbr <-  DLBCL_overview[6,1]
+geo_nbr <-  DLBCL_overview[4,1]
 res <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
                              target = "ENSG", clean = FALSE)
+head(exprs(res$es$Batch1))
 }
 }
 \author{

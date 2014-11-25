@@ -10,15 +10,21 @@ preprocessCELFiles(cel_files, cdf = c("affy", "brainarray"), target,
 \arguments{
 \item{cel_files}{A character vector of .CEL files.}
 
-\item{cdf}{A character specifying the CDF (brainarray or affy).}
+\item{cdf}{A character specifying the CDF type to use. Should be either
+\code{"brainarray"} or \code{"affy"}.}
 
-\item{target}{}
+\item{target}{Specifies the "target" CDF to use depending on \code{cdf}.
+If \code{cdf} is \code{"affy"} then \code{target} is e.g. \code{"core"}.
+If \code{cdf} is \code{"brainarray"} then \code{target} is
+e.g. \code{"ensg"}, \code{"entrez"}.
+See \code{listTargets()} to list the available targest.}
 
-\item{version}{}
+\item{version}{A character giving the brainarray version to be used.
+Only used if \code{cdf} is \code{"brainarray"}. See \code{listVersions()}.}
 
-\item{normalize}{}
+\item{background}{boolean. Should RMA background correction be performed?}
 
-\item{backgroud}{}
+\item{normalize}{boolean. Should RMA normalization be performed?}
 }
 \value{
 An expression set object.

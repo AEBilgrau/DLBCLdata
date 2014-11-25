@@ -4,11 +4,17 @@
 #' custom Brainarray chip definition files (cdf) if wanted.
 #'
 #' @param cel_files A character vector of .CEL files.
-#' @param cdf A character specifying the CDF (brainarray or affy).
-#' @param target
-#' @param version
-#' @param backgroud
-#' @param normalize
+#' @param cdf A character specifying the CDF type to use. Should be either
+#'   \code{"brainarray"} or \code{"affy"}.
+#' @param target Specifies the "target" CDF to use depending on \code{cdf}.
+#'   If \code{cdf} is \code{"affy"} then \code{target} is e.g. \code{"core"}.
+#'   If \code{cdf} is \code{"brainarray"} then \code{target} is
+#'   e.g. \code{"ensg"}, \code{"entrez"}.
+#'   See \code{listTargets()} to list the available targest.
+#' @param version A character giving the brainarray version to be used.
+#'   Only used if \code{cdf} is \code{"brainarray"}. See \code{listVersions()}.
+#' @param background boolean. Should RMA background correction be performed?
+#' @param normalize boolean. Should RMA normalization be performed?
 #' @return An expression set object.
 #' @importFrom affy read.affybatch just.rma
 #' @importFrom affyio read.celfile.header
@@ -52,6 +58,7 @@ preprocessCELFiles <- function(cel_files,
     }
 
   } else if (tolower(cdf) == "brainarray") {
+
     if (missing(target)) stop("No target provided.")
 
     req <- requireBrainarray(array_type = array_type,

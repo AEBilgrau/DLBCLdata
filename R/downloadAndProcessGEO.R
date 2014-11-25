@@ -21,9 +21,10 @@
 #' @examples
 #' \dontrun{
 #' data(DLBCL_overview)
-#' geo_nbr <-  DLBCL_overview[6,1]
+#' geo_nbr <-  DLBCL_overview[4,1]
 #' res <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
 #'                              target = "ENSG", clean = FALSE)
+#' head(exprs(res$es$Batch1))
 #' }
 #' @export
 downloadAndProcessGEO <- function(geo_nbr,
@@ -56,7 +57,6 @@ downloadAndProcessGEO <- function(geo_nbr,
             ") does not equal the number of cel files (",
             length(cel_files), ")")
   }
-
   if (!all(basenameSansCEL(cel_files) %in% GSM)) {
     warning("Not all downloaded CEL files are in the metadata")
   }
@@ -67,7 +67,6 @@ downloadAndProcessGEO <- function(geo_nbr,
   # Preprocess array data by RMA for each batch
   if (is.null(clean_meta_data$Batch)) {
     es <- preprocessCELFiles(cel_files, ...)
-    #es <- preprocessCELFiles(cel_files, cdf = "brainarray", target = "ENSG")
   } else {
     if (verbose) {
       message("Batches detected. RMA normalizing each of the batches: ",
