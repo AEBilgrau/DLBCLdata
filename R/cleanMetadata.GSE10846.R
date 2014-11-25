@@ -1,10 +1,11 @@
-#' Specific function for cleaning GSE10846
-#' @param meta_data A \code{data.frame} as returned by
-#'   \code{\link{downloadAndPreparemeta_data}}.
-#' @param A clean \code{data.frame}.
+#' @rdname cleanMetadata
+#' @details
+#'    GSE10846:\cr
+#'    The cleanup of GSE10846 (LLMPP) adds two batches corresponding to each
+#'    the CHOP and the R-CHOP cohort.
 #' @export
 cleanMetadata.GSE10846 <- function(meta_data) {
-  message("Cleaning GSE10846!")
+  message("Cleaning GSE10846 (LLMPP)!")
 
   stopifnot(require(survival))
 

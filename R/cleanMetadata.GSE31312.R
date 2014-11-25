@@ -1,11 +1,11 @@
 #' @rdname cleanMetadata
 #' @details
 #'    GSE31312:\cr
-#'    This function makes the samples GSM776068 and GSM776149 to be left
-#'    out of the downsteam preprocessing due to bad array quality.
+#'    This function makes the samples GSM776068, GSM776149, and GSM776462 to be
+#'    left out of the downsteam preprocessing due to bad array quality.
 #' @export
 cleanMetadata.GSE31312 <- function (meta_data) {
-  message("Cleaning GSE31312!")
+  message("Cleaning GSE31312 (IDRC)!")
   stopifnot(inherits(meta_data, "data.frame"))
 
   # Generic clean

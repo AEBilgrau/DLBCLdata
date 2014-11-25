@@ -7,7 +7,8 @@
 #' specific for that dataset and cleans metadata using that function.
 #'
 #' @param meta_data Output from \code{downloadAndPrepareMetadata}.
-#' @return Returns a function that will clean the given GEO dataset
+#' @return
+#'   Returns a specfically cleaned \code{data.frame} for the GEO dataset.
 #' @author Anders Ellern Bilgrau, Steffen Falgreen Larsen
 #' @rdname cleanMetadata
 #' @export
@@ -18,8 +19,8 @@ cleanMetadata <- function(meta_data) {
 #' @rdname cleanMetadata
 #' @export
 cleanMetadata.data.frame <- function(meta_data) {
-  message("No specific cleaning function was found for ", class(meta_data)[1],
-          ". No cleanup was done!", sep = "")
+  message("No specific cleaning function was found for ",
+          class(meta_data)[1], ". No cleanup was done!", sep = "")
   return(meta_data)
 }
 
