@@ -2,7 +2,12 @@ cleanName <- function(array_type) {
   gsub("[-_]", "", tolower(array_type))
 }
 
-getSubversion <- function(version, n) {
+listVersions <- function() {
+  c("19.0.0", "18.0.0", "17.1.0", "17.0.0", "16.0.0", "15.1.0", "15.0.0",
+    "14.1.0", "14.0.0", "13.0.0")
+}
+
+getSubversion <- function(version, n = 1) {
   return(as.numeric(unlist(strsplit(version, "\\.")))[n])
 }
 
