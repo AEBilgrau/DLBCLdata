@@ -25,8 +25,8 @@ enviroments from the Brainarray website.
 tmp.path <- requireBrainarray("hgu133a", custom_cdf = "enst",
                               version = "18.0.0")
 print(tmp.path)
-tmp.path <- requireBrainarray("hgu133a", custom_cdf = "enst")
-print(tmp.path)
+tmp.path2 <- requireBrainarray("hgu133a", custom_cdf = "enst")
+print(tmp.path2)
 }
 \author{
 Steffen Falgreen

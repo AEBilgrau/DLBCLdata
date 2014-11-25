@@ -18,8 +18,8 @@
 #' tmp.path <- requireBrainarray("hgu133a", custom_cdf = "enst",
 #'                               version = "18.0.0")
 #' print(tmp.path)
-#' tmp.path <- requireBrainarray("hgu133a", custom_cdf = "enst")
-#' print(tmp.path)
+#' tmp.path2 <- requireBrainarray("hgu133a", custom_cdf = "enst")
+#' print(tmp.path2)
 #' @export
 requireBrainarray <- function(array_type,
                               custom_cdf = "enst",
@@ -27,7 +27,13 @@ requireBrainarray <- function(array_type,
   output <- list()
   brain_dat <- output[["brain_dat"]] <-
     readBrainarrayTable(custom_cdf = custom_cdf, version = version)
+
   base_url <- attributes(brain_dat)$base_url
+  if (getSubversion(version) >= 19) {
+    base_url <- paste0("http://mbni.org/customcdf/", version, "/",
+                       tolower(custom_cdf))
+  }
+
   pkgs <- getBrainarrayPackages(brain_dat, array_type = array_type)
 
   for (pkg in pkgs) {

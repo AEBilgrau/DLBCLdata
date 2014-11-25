@@ -8,6 +8,7 @@
 #' @return Returns a string on the form X.Y.Z giving the latest version.
 #' @examples
 #' getLatestVersion()
+#' @keywords internal
 #' @export
 getLatestVersion <- function() {
   base_url <-
@@ -19,7 +20,7 @@ getLatestVersion <- function() {
 
   vX.0.0 <- length(brain_dat)
   tmp <- brain_dat[[vX.0.0]]
-  v0.X.0 <- sum(grepl("Click", tmp[nrow(tmp),])) - 1
+  v0.X.0 <- sum(grepl("Click", tmp[nrow(tmp), ])) - 1
   v0.0.X <- 0
 
   return(paste(vX.0.0, v0.X.0, v0.0.X, sep = "."))
