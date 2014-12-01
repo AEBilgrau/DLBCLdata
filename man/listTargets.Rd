@@ -21,5 +21,6 @@ This function lists available targets for a given \code{cdf} argument.
 listTargets("affy")
 listTargets("brainarray", version = "18.0.0")
 listTargets("brainarray", version = "17.1.0")
+listTargets("brainarray", version = "15.0.0")
 }
 
