@@ -4,7 +4,7 @@ basenameSansCEL <- function(x) {
 }
 
 getAffyTargets <- function() {
-  message("Many 'older' arrays don't use targets. ")
+  message("Many 'older' arrays don't use targets.")
   return(c("core", "full", "probesets"))
 }
 
