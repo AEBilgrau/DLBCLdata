@@ -21,6 +21,8 @@ cleanMetadata <- function(meta_data) {
 cleanMetadata.data.frame <- function(meta_data) {
   message("No specific cleaning function was found for ",
           class(meta_data)[1], ". No cleanup was done!", sep = "")
+  stopifnot(inherits(meta_data, "data.frame"))
+
   return(meta_data)
 }
 

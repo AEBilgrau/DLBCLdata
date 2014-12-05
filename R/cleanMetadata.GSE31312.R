@@ -6,7 +6,6 @@
 #' @export
 cleanMetadata.GSE31312 <- function (meta_data) {
   message("Cleaning GSE31312 (IDRC)!")
-  stopifnot(inherits(meta_data, "data.frame"))
 
   # Generic clean
   suppressMessages(meta_data <- cleanMetadata.data.frame(meta_data))
