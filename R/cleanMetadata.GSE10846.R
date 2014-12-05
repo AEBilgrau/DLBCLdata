@@ -44,41 +44,41 @@ cleanMetadata.GSE10846 <- function(meta_data) {
     return(list(ipi = score, ipi.hl = ipi.hl, na.1 = n.NA, ipi.na = score2))
   }
 
-  meta_data <- apply(meta_data, 2, as.character)
-  meta_data <- as.data.frame(meta_data[1:414, ], stringsAsFactors = FALSE)
+  metadata <- apply(meta_data, 2, as.character)
+  metadata <- as.data.frame(metadata[1:414, ], stringsAsFactors = FALSE)
 
-  GEO.ID <- meta_data$geo_accession
-  id     <- gsub("Individual: ", "", meta_data$source_name_ch1)
-  gender <- gsub("Gender: ",     "", meta_data$characteristics_ch1)
-  age    <- gsub("Age: ",        "", meta_data$characteristics_ch1.1)
-  tissue <- gsub("Tissue: ",     "", meta_data$characteristics_ch1.2)
+  GEO.ID <- metadata$geo_accession
+  id     <- gsub("Individual: ", "", metadata$source_name_ch1)
+  gender <- gsub("Gender: ",     "", metadata$characteristics_ch1)
+  age    <- gsub("Age: ",        "", metadata$characteristics_ch1.1)
+  tissue <- gsub("Tissue: ",     "", metadata$characteristics_ch1.2)
 
   disease.state        <- gsub("Disease state: ",
-                               "", meta_data$characteristics_ch1.3)
+                               "", metadata$characteristics_ch1.3)
   Submitting.diagnosis <- gsub("Clinical info: Submitting diagnosis: ",
-                               "", meta_data$characteristics_ch1.5)
+                               "", metadata$characteristics_ch1.5)
   microarray.diagnosis <- gsub("Clinical info: Final microarray diagnosis: ",
-                               "", meta_data$characteristics_ch1.6)
+                               "", metadata$characteristics_ch1.6)
   microarray.diagnosis <- gsub(" DLBCL", "", microarray.diagnosis)
 
   status <- gsub("Clinical info: Follow up status: ",
-                 "", meta_data$characteristics_ch1.7)
+                 "", metadata$characteristics_ch1.7)
   FU     <- gsub("Clinical info: Follow up years: ",
-                 "", meta_data$characteristics_ch1.8)
+                 "", metadata$characteristics_ch1.8)
   chemo  <- gsub("Clinical info: Chemotherapy: ",
-                 "", meta_data$characteristics_ch1.9)
+                 "", metadata$characteristics_ch1.9)
 
   chemo  <- gsub("-Like Regimen", "", chemo)
 
   ECOG   <- gsub("Clinical info: ECOG performance status: ",
-                 "", meta_data$characteristics_ch1.10)
+                 "", metadata$characteristics_ch1.10)
   stage  <- gsub("Clinical info: Stage: ",
-                 "", meta_data$characteristics_ch1.11)
+                 "", metadata$characteristics_ch1.11)
   LDH    <- gsub("Clinical info: LDH ratio: ",
-                 "", meta_data$characteristics_ch1.12)
+                 "", metadata$characteristics_ch1.12)
 
   No.Extra.Nodal <- gsub("Clinical info: Number of extranodal sites: ",
-                         "", meta_data$characteristics_ch1.13)
+                         "", metadata$characteristics_ch1.13)
 
 
   metadataLLMPP <- data.frame(id, GEO.ID, gender, as.numeric(age), status,
@@ -138,5 +138,6 @@ cleanMetadata.GSE10846 <- function(meta_data) {
   metadataLLMPP$CEL   <- rownames(metadataLLMPP)
   metadataLLMPP$GSM   <- as.character(metadataLLMPP$GEO.ID)
 
+  class(metadataLLMPP) <- class(meta_data)
   return(metadataLLMPP)
 }
