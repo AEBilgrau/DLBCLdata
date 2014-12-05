@@ -21,7 +21,7 @@
 #' @examples
 #' \dontrun{
 #' data(DLBCL_overview)
-#' geo_nbr <- "GSE31312"
+#' geo_nbr <- #"GSE31312"
 #'   DLBCL_overview[5,1] #DLBCL_overview[4,1]
 #' res <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
 #'                              target = "ENSG", clean = FALSE)
@@ -38,7 +38,7 @@ downloadAndProcessGEO <- function(geo_nbr,
   meta_data <- downloadAndPrepareMetadata(geo_nbr = geo_nbr, destdir = destdir,
                                           clean = clean, verbose = verbose)
 
-  # Process metadata
+   # Process metadata
   clean_meta_data <- cleanMetadata(meta_data)
 
   # Download array data
@@ -52,11 +52,6 @@ downloadAndProcessGEO <- function(geo_nbr,
   stopifnot(all(basenameSansCEL(clean_meta_data$file) == clean_meta_data$GSM))
 
   # Checks and warnings
-  if (nrow(clean_meta_data) != length(cel_files)) {
-    warning("In ", geo_nbr, ". The number of subjects in the metadata (",
-            nrow(clean_meta_data), ") does not equal the number of cel files (",
-            length(cel_files), ")")
-  }
   if (!all(basenameSansCEL(cel_files) %in% GSM)) {
     warning("Not all downloaded CEL files are in the metadata")
   }
@@ -70,7 +65,7 @@ downloadAndProcessGEO <- function(geo_nbr,
   } else {
     if (verbose) {
       message("Batches detected. RMA normalizing each of the batches: ",
-              paste0(levels(clean_meta_data$Batch), collapse = " "))
+              paste0(levels(clean_meta_data$Batch), collapse = ", "))
     }
     batch_list <- with(clean_meta_data, split(file, Batch))
     es <- lapply(batch_list, preprocessCELFiles, ...)
@@ -83,7 +78,7 @@ downloadAndProcessGEO <- function(geo_nbr,
     return(ans)
   }
   a <- list()
-  a$cdf <- finfo(es, "cdf")
+  a$cdf <- tolower(finfo(es, "cdf"))
   a$target <- finfo(es, "target")
   a$version <- finfo(es, "version")
   file_name <-
