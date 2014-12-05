@@ -21,7 +21,8 @@
 #' @examples
 #' \dontrun{
 #' data(DLBCL_overview)
-#' geo_nbr <-  DLBCL_overview[4,1]
+#' geo_nbr <- "GSE31312"
+#'   DLBCL_overview[5,1] #DLBCL_overview[4,1]
 #' res <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
 #'                              target = "ENSG", clean = FALSE)
 #' head(exprs(res$es$Batch1))
@@ -52,9 +53,8 @@ downloadAndProcessGEO <- function(geo_nbr,
 
   # Checks and warnings
   if (nrow(clean_meta_data) != length(cel_files)) {
-    warning("In ", geo_nbr, ". ",
-            "The number of subjects in the metadata (", nrow(clean_meta_data),
-            ") does not equal the number of cel files (",
+    warning("In ", geo_nbr, ". The number of subjects in the metadata (",
+            nrow(clean_meta_data), ") does not equal the number of cel files (",
             length(cel_files), ")")
   }
   if (!all(basenameSansCEL(cel_files) %in% GSM)) {
@@ -77,16 +77,24 @@ downloadAndProcessGEO <- function(geo_nbr,
   }
 
   # Save Rds file
-  a <- attributes(es)
-  file_name <- paste0(geo_nbr, "_", a$cdf,
-                      ifelse(is.null(a$target), "", paste0("_", a$target)),
-                      ifelse(a$cdf=="affy", "", paste0("_", a$version)), ".Rds")
+  finfo <- function(x, y) {
+    info <- unique(unlist(lapply(es, function(x) attributes(x)[[y]])))
+    ans <- paste(info, collapse = "-")
+    return(ans)
+  }
+  a <- list()
+  a$cdf <- finfo(es, "cdf")
+  a$target <- finfo(es, "target")
+  a$version <- finfo(es, "version")
+  file_name <-
+    paste0(geo_nbr, "_", a$cdf, ifelse(a$target != "", "_", ""), a$target,
+           ifelse(a$cdf == "affy", "", paste0("_", a$version)), ".Rds")
   output <- list(es = es, metadata = clean_meta_data, call = match.call())
   saveRDS(output, file = file.path(destdir, geo_nbr, file_name))
 
   # Clean if wanted
   if (clean) file.remove(cel_files)
-  if (verbose) cat("done.\n")
+  if (verbose) message("done.\n")
 
   return(invisible(output))
 }
