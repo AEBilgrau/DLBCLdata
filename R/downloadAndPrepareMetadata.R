@@ -17,8 +17,9 @@
 #'   Steffen Falgreen Larsen
 #' @examples
 #' \dontrun{
-#' downloadAndPrepareCELFiles(geo_nbr = "GSE18376",
-#'                            destdir = tempdir())
+#' data(DLBCL_overview)
+#' geo_nbr <- DLBCL_overview[6,1]
+#' downloadAndPrepareMetadata(geo_nbr = geo_nbr, destdir = getwd())
 #' }
 #' @importFrom GEOquery getGEO
 #' @importFrom Biobase pData
@@ -28,10 +29,10 @@ downloadAndPrepareMetadata <- function(geo_nbr,
                                        destdir = getwd(),
                                        clean = FALSE,
                                        verbose = TRUE) {
-  if (verbose) cat("Preparing", geo_nbr, "metadata\n")
+  if (verbose) message("Preparing ", geo_nbr, " metadata")
 
   # Download data if not already downloaded
-  if (verbose) cat("Downloading files...\n")
+  if (verbose) message("Downloading files...")
   dl_dir <- file.path(destdir, geo_nbr)
   dir.create(dl_dir, showWarnings = FALSE)
   dl <- getGEO(GEO = geo_nbr, destdir = dl_dir,
@@ -43,11 +44,11 @@ downloadAndPrepareMetadata <- function(geo_nbr,
 
   # Clean-up if wanted
   if (clean) {
-    if (verbose) cat("Removing unnessary files...\n")
+    if (verbose) message("Removing unnessary files...")
     file.remove(file.path(destdir, geo_nbr, names(dl)))
   }
 
-  if (verbose) cat("Done.")
+  if (verbose) message("Done.")
   return(invisible(pd))
 }
 
