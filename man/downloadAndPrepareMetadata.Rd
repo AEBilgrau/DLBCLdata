@@ -30,8 +30,9 @@ The function will overwrite existing files in the \code{destdir}.
 }
 \examples{
 \dontrun{
-downloadAndPrepareCELFiles(geo_nbr = "GSE18376",
-                           destdir = tempdir())
+data(DLBCL_overview)
+geo_nbr <- DLBCL_overview[6,1]
+downloadAndPrepareMetadata(geo_nbr = geo_nbr, destdir = getwd())
 }
 }
 \author{

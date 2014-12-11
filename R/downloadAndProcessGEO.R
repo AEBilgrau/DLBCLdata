@@ -21,8 +21,7 @@
 #' @examples
 #' \dontrun{
 #' data(DLBCL_overview)
-#' geo_nbr <- #"GSE31312"
-#'   DLBCL_overview[5,1] #DLBCL_overview[4,1]
+#' geo_nbr <- DLBCL_overview[6,1]
 #' res <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
 #'                              target = "ENSG", clean = FALSE)
 #' head(exprs(res$es$Batch1))
