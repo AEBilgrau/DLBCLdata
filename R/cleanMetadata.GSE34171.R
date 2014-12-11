@@ -6,15 +6,12 @@
 #' @export
 cleanMetadata.GSE34171 <- function(meta_data) {
   message("Cleaning GSE34171 (MDFCI)!")
-  stopifnot(inherits(meta_data, "data.frame"))
 
   # Generic clean
   suppressMessages(meta_data <- cleanMetadata.data.frame(meta_data))
 
   # Added factor describing the batches and CEL files
-  exclude <- c("GSM776068", "GSM776149")
-  meta_data$Batch <-
-    factor(ifelse(rownames(meta_data) %in% exclude, NA, "Batch1"))
+  meta_data$Batch <- ""
   meta_data$CEL <- rownames(meta_data)
   meta_data$GSM <- as.character(meta_data$geo_accession)
 
