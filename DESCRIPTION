@@ -10,8 +10,10 @@ BugReports: https://github.com/AEBilgrau/DLBCLdata/issues
 Description: Automatic download and preparation of selected
     Large-Scale Diffuse Large B-Cell Lymphoma gene expression profile studies
 KeepSource: yes
+Suggests:
+    survival
 Imports:
-    dplyr,
+    Biobase,
     GEOquery,
     affy,
     affyio,
