@@ -13,6 +13,7 @@ KeepSource: yes
 Suggests:
     survival
 Imports:
+    AnnotationDbi,
     Biobase,
     GEOquery,
     affy,

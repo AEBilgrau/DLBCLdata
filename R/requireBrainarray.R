@@ -20,6 +20,7 @@
 #' print(tmp.path)
 #' tmp.path2 <- requireBrainarray("hgu133a", custom_cdf = "enst")
 #' print(tmp.path2)
+#' @import AnnotationDbi
 #' @export
 requireBrainarray <- function(array_type,
                               custom_cdf = "enst",
