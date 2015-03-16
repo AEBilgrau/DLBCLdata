@@ -72,7 +72,10 @@ downloadAndProcessGEO <- function(geo_nbr,
 
   # Save Rds file
   finfo <- function(x, y) {
-    info <- unique(unlist(lapply(es, function(x) attributes(x)[[y]])))
+    if (!is.list(x)) {
+      x <- list(x)
+    }
+    info <- unique(unlist(lapply(x, function(e) attributes(e)[[y]])))
     ans <- paste(info, collapse = "-")
     return(ans)
   }
