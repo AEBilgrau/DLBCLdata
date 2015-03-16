@@ -7,7 +7,7 @@
 readDACData(geo_nbr)
 }
 \arguments{
-\item{geo_nbr}{A character string giving the GSE number.}
+\item{geo_nbr}{A \code{character} string giving the GSE number.}
 }
 \value{
 A \code{data.frame} of the predicted classes and the class
@@ -15,10 +15,11 @@ A \code{data.frame} of the predicted classes and the class
 }
 \description{
 Functions to read the internal data files of classified CEL files using
-the DLBCL Automatic Classifier (DAC).
+the DLBCL Automatic Classifier (DAC). These were manually supplied to the
+DAC Windows interface.
 }
 \examples{
-readDACData("GSE19246")
+head(readDACData("GSE19246"))
 }
 \keyword{internal}
 
