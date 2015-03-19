@@ -39,22 +39,27 @@ downloadAndProcessGEO <- function(geo_nbr,
 
    # Process metadata
   clean_meta_data <- cleanMetadata(meta_data)
+  GSM_met <- basenameSansCEL(rownames(clean_meta_data))
+  stopifnot(all(GSM_met == clean_meta_data$GEO))
 
   # Download array data
   cel_files <- downloadAndPrepareCELFiles(geo_nbr = geo_nbr, destdir = destdir,
                                           clean = clean, verbose = verbose)
+  GSM_cel <- gsub("(GSM[0-9]+).*$", "\\1", basenameSansCEL(cel_files))
 
-  GSM <- gsub("\\.cel$", "", rownames(clean_meta_data), ignore.case = TRUE)
-
-  # Add filenames to cleaned data
-  clean_meta_data$file <- cel_files[match(GSM, basenameSansCEL(cel_files))]
-  stopifnot(all(basenameSansCEL(clean_meta_data$file) == clean_meta_data$GSM))
+  # Add local filenames to cleaned data
+  clean_meta_data$file <- cel_files[pmatch(GSM_met, GSM_cel)]
+  # Check that they are added properly
+  if (!all(mapply(grepl, clean_meta_data$GSM, clean_meta_data$file))) {
+    stop("The downloaded .CEL files names does not agree with the downloaded",
+         "metadata")
+  }
 
   # Checks and warnings
-  if (!all(basenameSansCEL(cel_files) %in% GSM)) {
+  if (!all(GSM_cel %in% GSM_met)) {
     warning("Not all downloaded CEL files are in the metadata")
   }
-  if (!all(GSM %in% basenameSansCEL(cel_files))) {
+  if (!all(GSM_met %in% GSM_cel)) {
     warning("Not all GSM numbers in the metadata have CEL files")
   }
 
