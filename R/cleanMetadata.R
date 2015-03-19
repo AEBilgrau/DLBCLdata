@@ -20,8 +20,11 @@ cleanMetadata <- function(meta_data) {
 #' @export
 cleanMetadata.data.frame <- function(meta_data) {
   message("No specific cleaning function was found for ",
-          class(meta_data)[1], ". No cleanup was done!", sep = "")
-  stopifnot(inherits(meta_data, "data.frame"))
+          class(meta_data)[1], ". No specific cleanup was done!", sep = "")
+
+  meta_data$Batch <- "Batch1"
+  meta_data$CEL   <- rownames(meta_data)
+  meta_data$GSM   <- as.character(meta_data$geo_accession)
 
   return(meta_data)
 }
