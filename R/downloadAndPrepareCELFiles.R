@@ -25,6 +25,9 @@ downloadAndPrepareCELFiles <- function(geo_nbr,
                                        destdir = getwd(),
                                        clean = FALSE,
                                        verbose = TRUE) {
+  options("timeout" = 240) # Increase timeout (in seconds)
+  on.exit(options("timeout" = 60)) # Reset to standard timeout on exit
+
   if (verbose) message("Preparing GEO ", geo_nbr, " data")
   dl_dir <- file.path(destdir, geo_nbr)
 
