@@ -40,7 +40,7 @@ downloadAndProcessGEO <- function(geo_nbr,
    # Process metadata
   clean_meta_data <- cleanMetadata(meta_data)
   GSM_met <- basenameSansCEL(rownames(clean_meta_data))
-  stopifnot(all(GSM_met == clean_meta_data$GEO))
+  stopifnot(all(GSM_met == clean_meta_data$GSM))
 
   # Download array data
   cel_files <- downloadAndPrepareCELFiles(geo_nbr = geo_nbr, destdir = destdir,
@@ -49,11 +49,6 @@ downloadAndProcessGEO <- function(geo_nbr,
 
   # Add local filenames to cleaned data
   clean_meta_data$file <- cel_files[pmatch(GSM_met, GSM_cel)]
-  # Check that they are added properly
-  if (!all(mapply(grepl, clean_meta_data$GSM, clean_meta_data$file))) {
-    stop("The downloaded .CEL files names does not agree with the downloaded",
-         "metadata")
-  }
 
   # Checks and warnings
   if (!all(GSM_cel %in% GSM_met)) {
