@@ -4,8 +4,8 @@ context("Download and process all DLBCL datasets")
 data(DLBCL_overview)
 
 if (deep_test) {  # deep_test is defined in ./test-all.R
-
-  for (gse in DLBCL_overview$GSE) {
+  exclude <- character(0)
+  for (gse in setdiff(DLBCL_overview$GSE, exclude)) {
 
     cat("\n\n\n\n\n\n\n\n #### ", gse, " #### \n\n\n\n")
 
@@ -16,7 +16,7 @@ if (deep_test) {  # deep_test is defined in ./test-all.R
 
     cat("\n", gse,  "downloaded and preprocessed successfully!\n")
 
-    test_that("downloadAndProcessGEO works for all DLBCL sets", {
+    test_that(paste("downloadAndProcessGEO works for", gse), {
       expect_that(res, is_a("list"))
       expect_that(names(res), equals(c("es", "metadata", "call")))
       expect_that(res$es, is_a("list"))
