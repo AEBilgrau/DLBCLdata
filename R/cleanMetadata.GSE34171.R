@@ -10,11 +10,6 @@ cleanMetadata.GSE34171 <- function(meta_data) {
   # Generic clean
   suppressMessages(meta_data <- cleanMetadata.data.frame(meta_data))
 
-  # Added factor describing the batches and CEL files
-  meta_data$Batch <- ""
-  meta_data$CEL <- rownames(meta_data)
-  meta_data$GSM <- as.character(meta_data$geo_accession)
-
   return(meta_data)
 }
 
