@@ -7,6 +7,9 @@
 cleanMetadata.GSE10846 <- function(meta_data) {
   message("Cleaning GSE10846 (LLMPP)!")
 
+  # Generic clean
+  suppressMessages(meta_data <- cleanMetadata.data.frame(meta_data))
+
   stopifnot(require(survival))
 
   # Helper functions
