@@ -64,24 +64,16 @@ downloadAndProcessGEO <- function(geo_nbr,
   } else {
     if (verbose) {
       message("Batches detected. RMA normalizing each of the batches: ",
-              paste0(levels(clean_meta_data$Batch), collapse = ", "))
+              paste0(unique(clean_meta_data$Batch), collapse = ", "))
     }
     batch_list <- with(clean_meta_data, split(file, Batch))
     es <- lapply(batch_list, preprocessCELFiles, ...)
   }
 
   # Save Rds file
-  finfo <- function(x, y) {
-    if (!is.list(x)) {
-      x <- list(x)
-    }
-    info <- unique(unlist(lapply(x, function(e) attributes(e)[[y]])))
-    ans <- paste(info, collapse = "-")
-    return(ans)
-  }
-  a <- list()
-  a$cdf <- tolower(finfo(es, "cdf"))
-  a$target <- finfo(es, "target")
+  a         <- list()
+  a$cdf     <- tolower(finfo(es, "cdf"))
+  a$target  <- finfo(es, "target")
   a$version <- finfo(es, "version")
   file_name <-
     paste0(geo_nbr, "_", a$cdf, ifelse(a$target != "", "_", ""), a$target,
@@ -96,4 +88,11 @@ downloadAndProcessGEO <- function(geo_nbr,
   return(invisible(output))
 }
 
-
+finfo <- function(x, y) {
+  if (!is.list(x)) {
+    x <- list(x)
+  }
+  info <- unique(unlist(lapply(x, function(e) attributes(e)[[y]])))
+  ans <- paste(info, collapse = "-")
+  return(ans)
+}

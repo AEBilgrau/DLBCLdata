@@ -19,6 +19,7 @@ cleanMetadata <- function(meta_data) {
 #' @rdname cleanMetadata
 #' @export
 cleanMetadata.data.frame <- function(meta_data) {
+
   message("No specific cleaning function was found for ",
           class(meta_data)[1], ". No specific cleanup was done!", sep = "")
 
