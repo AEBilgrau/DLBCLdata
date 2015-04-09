@@ -9,8 +9,8 @@
 #' @param destdir The destination dir of the downloaded files.
 #' @param clean Should the strictly unnessesary files be deleted?
 #' @param verbose Signal the process.
-#' @return A \code{data.frame} giving the clinical and metadata information
-#'   for the GEO dataset.
+#' @return A \code{list} of \code{data.frame}s giving the clinical and metadata
+#'   information for the GEO dataset.
 #' @note The function will overwrite existing files in the \code{destdir}.
 #' @author
 #'   Anders Ellern Bilgrau,
@@ -39,7 +39,23 @@ downloadAndPrepareMetadata <- function(geo_nbr,
                GSEMatrix = TRUE, getGPL = FALSE)
 
   # Extract pheno data
-  pd <- pData(dl[[1]])
+  if (!is.list(dl)) {
+
+    pd <- pData(dl)
+
+  } else {
+
+    pd <- lapply(dl, pData)
+
+    # Merge the dataframes (if multiple)
+    merge2 <- function(x, y) {
+      merge(x, y, all = TRUE, sort = FALSE)
+    }
+    pd <- Reduce(merge2, pd)
+
+  }
+
+  # Set class
   class(pd) <- c(geo_nbr, class(pd))
 
   # Clean-up if wanted

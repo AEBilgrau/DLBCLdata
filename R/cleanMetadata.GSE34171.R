@@ -10,6 +10,15 @@ cleanMetadata.GSE34171 <- function(meta_data) {
   # Generic clean
   suppressMessages(meta_data <- cleanMetadata.data.frame(meta_data))
 
+  # Added factor describing the batches and CEL files
+  meta_data$Batch <- meta_data$platform_id
+  meta_data$Batch[meta_data$Batch == "GPL6801"] <- NA
+
+  meta_data$CEL <-
+   gsub("^.+/(GSM[0-9]+)\\..+$", "\\1", meta_data$supplementary_file)
+  meta_data$GSM <- as.character(meta_data$geo_accession)
+  rownames(meta_data) <- meta_data$CEL
+
   return(meta_data)
 }
 
