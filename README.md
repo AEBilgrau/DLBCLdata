@@ -17,7 +17,7 @@ Note, that this version is in development and as such, it may be unstable. Be su
 For previous versions of **DLBCLdata**, visit the old [releases at GitHub](https://github.com/AEBilgrau/DLBCLdata/releases).
 
 ## Usage
-The package works with many NCBI GEO repositories. However, the package is tailored specificly to some DLBCL GEO accession numbers. To get an overview of the "supported" GEO numbers, see
+The package works with many NCBI GEO repositories. However, the package is tailored specifically to some DLBCL GEO accession numbers. To get an overview of the "supported" GEO numbers, see
 
 ```R
 data(DLBCO_overview)
@@ -30,6 +30,4 @@ To download and process as specific GEO number, simply run
 res <- downloadAndProcessGEO("GSE19246", cdf = "brainarray", target = "ensg")
 ```
 
-This downloads the `.CEL` files and pre-processes the data using RMA normalization and custom Brainarray CDFs.
-
-
+This downloads the `.CEL` files and pre-processes the data directly to Ensembl gene identifiers (ENSG) using RMA normalization and custom Brainarray CDFs.
