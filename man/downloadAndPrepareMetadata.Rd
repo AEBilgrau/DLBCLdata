@@ -17,8 +17,8 @@ downloadAndPrepareMetadata(geo_nbr, destdir = getwd(), clean = FALSE,
 \item{verbose}{Signal the process.}
 }
 \value{
-A \code{data.frame} giving the clinical and metadata information
-  for the GEO dataset.
+A \code{list} of \code{data.frame}s giving the clinical and metadata
+  information for the GEO dataset.
 }
 \description{
 Function for downloading the metadata of a GEO dataset and prepare it for
