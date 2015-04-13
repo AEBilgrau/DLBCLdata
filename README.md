@@ -22,7 +22,7 @@ The package works with many NCBI GEO repositories. However, the package is tailo
 ```R
 data(DLBCO_overview)
 View(DLBCL_overview)
-````
+```
 
 To download and process as specific GEO number, simply run
 
@@ -30,4 +30,8 @@ To download and process as specific GEO number, simply run
 res <- downloadAndProcessGEO("GSE19246", cdf = "brainarray", target = "ensg")
 ```
 
-This downloads the `.CEL` files and pre-processes the data directly to Ensembl gene identifiers (ENSG) using RMA normalization and custom Brainarray CDFs.
+This downloads the `.CEL` files and pre-processes the data directly to Ensembl gene identifiers (ENSG) using RMA normalization and custom Brainarray CDFs [1].
+
+## References
+
+ 1. Manhong Dai, Pinglang Wang, Andrew D. Boyd, Georgi Kostov, Brian Athey, Edward G. Jones, William E. Bunney, Richard M. Myer, Terry P. Speed, Huda Akil, Stanley J. Watson and Fan Meng. (2005) "Evolving Gene/Transcript Definitions Significantly Alter the Interpretation of GeneChip Data." Nucleic Acid Research 33 (20), e175 [(http://brainarray.mbni.med.umich.edu)](http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/genomic_curated_CDF.asp)
