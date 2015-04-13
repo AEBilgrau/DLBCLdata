@@ -10,7 +10,7 @@
 #'   If \code{cdf} is \code{"affy"} then \code{target} is e.g. \code{"core"}.
 #'   If \code{cdf} is \code{"brainarray"} then \code{target} is
 #'   e.g. \code{"ensg"}, \code{"entrez"}.
-#'   See \code{listTargets()} to list the available targest.
+#'   See \code{listTargets()} to list the available targets.
 #' @param version A character giving the brainarray version to be used.
 #'   Only used if \code{cdf} is \code{"brainarray"}. See \code{listVersions()}.
 #' @param background boolean. Should RMA background correction be performed?
