@@ -2,20 +2,38 @@
 % Please edit documentation in R/downloadAndProcessDLBCL.R
 \name{downloadAndProcessDLBCL}
 \alias{downloadAndProcessDLBCL}
-\title{Download all curated DLBCL datasets}
+\title{Download and process all curated DLBCL datasets}
 \usage{
 downloadAndProcessDLBCL(...)
 }
+\arguments{
+\item{\dots}{Arguments passed to \link{\code{downloadAndProcessGEO}}.}
+}
+\value{
+Returns a \code{list} of the output of
+  \link{\code{downloadAndProcessGEO}}.
+}
 \description{
-Automatically download all curated DLBCL datasets.
+Automatically download and process all support curated DLBCL datasets.
+Simply loops over all datasets in \code{data(dlbcl_overview)}.
 }
 \examples{
+listTargets("brainarray")
 \dontrun{
-res <- downloadAndProcessDLBCL()
+# Preprocess with brainarray "Entrez" gene ids
+res <- downloadAndProcessDLBCL(cdf = "brainarray", target = "ENTREZG",
+                               clean = FALSE)
+
+# Preprocess with brainarray "Ensembl" gene ids
+res2 <- downloadAndProcessDLBCL(cdf = "brainarray", target = "ENSG",
+                                clean = TRUE)
+
+# Preprocess with affy's probesets
+res3 <- downloadAndProcessDLBCL()  #= downloadAndProcessDLBCL(cdf = "affy")
 }
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
   Steffen Falgreen Larsen <sfl (at) rn.dk>
 }
 
