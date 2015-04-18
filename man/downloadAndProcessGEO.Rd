@@ -31,6 +31,8 @@ data and formatting the phenotype data, and saving the results in a
 }
 \note{
 The function will overwrite existing files in the \code{destdir}.
+
+  Arguments after \code{\dots} must be named.
 }
 \examples{
 \dontrun{

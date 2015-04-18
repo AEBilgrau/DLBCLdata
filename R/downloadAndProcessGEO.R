@@ -15,6 +15,8 @@
 #'   after the used parameters.
 #'   Invisibly returns the saved object.
 #' @note The function will overwrite existing files in the \code{destdir}.
+#'
+#'   Arguments after \code{\dots} must be named.
 #' @author
 #'   Anders Ellern Bilgrau,
 #'   Steffen Falgreen Larsen
