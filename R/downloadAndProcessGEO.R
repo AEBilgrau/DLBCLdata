@@ -78,8 +78,11 @@ downloadAndProcessGEO <- function(geo_nbr,
   a$target  <- finfo(es, "target")
   a$version <- finfo(es, "version")
   file_name <-
-    paste0(geo_nbr, "_", a$cdf, ifelse(a$target != "", "_", ""), a$target,
-           ifelse(a$cdf == "affy", "", paste0("_", a$version)), ".Rds")
+    paste0(geo_nbr, "_", a$cdf,
+           ifelse(a$target != "", "_", ""),
+           tolower(a$target),
+           ifelse(a$cdf == "affy", "", paste0("_", a$version)),
+           ".Rds")
   output <- list(es = es, metadata = clean_meta_data, call = match.call())
   saveRDS(output, file = file.path(destdir, geo_nbr, file_name))
 
