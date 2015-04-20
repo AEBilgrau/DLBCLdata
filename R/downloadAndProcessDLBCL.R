@@ -4,7 +4,9 @@
 #' Simply loops over all datasets in \code{data(dlbcl_overview)}.
 #'
 #' @param \dots Arguments passed to \link{\code{downloadAndProcessGEO}}.
-#' @return Returns a \code{list} of the output of
+#' @return Saves a \code{list} of the processed datasets in the working
+#'   directory named "dlbcl_data.Rds".
+#'   Invisibly returns a \code{list} of the output of
 #'   \link{\code{downloadAndProcessGEO}}.
 #' @author
 #'   Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
@@ -12,6 +14,8 @@
 #' @examples
 #' listTargets("brainarray")
 #' \dontrun{
+#' # Warning, very long processing times if data is not downloaded.
+#'
 #' # Preprocess with brainarray "Entrez" gene ids
 #' res <- downloadAndProcessDLBCL(cdf = "brainarray", target = "ENTREZG",
 #'                                clean = FALSE)
@@ -26,7 +30,7 @@
 #' @export
 downloadAndProcessDLBCL <- function(...) {
   st <- proc.time()
-  cat("\nDownloading and processing all DLBCL dataset\n")
+  message("\nDownloading and processing all DLBCL datasets\n")
 
   data(DLBCL_overview)  # Load data overview
 
@@ -45,6 +49,9 @@ downloadAndProcessDLBCL <- function(...) {
         t[3] %/% 60, " minutes.\n", sep = "")
   }
 
-  cat("\nFinished  in", (proc.time()-st)[3] %/% 60, "minutes.\n")
-  return(res)
+  message("Saving all processed DLBCL data")
+  saveRDS(res, file = file.path(getwd(), "dlbcl_data.Rds"))
+
+  message("\nFinished  in", (proc.time()-st)[3] %/% 60, "minutes.\n")
+  return(invisible(res))
 }

@@ -10,7 +10,9 @@ downloadAndProcessDLBCL(...)
 \item{\dots}{Arguments passed to \link{\code{downloadAndProcessGEO}}.}
 }
 \value{
-Returns a \code{list} of the output of
+Saves a \code{list} of the processed datasets in the working
+  directory named "dlbcl_data.Rds".
+  Invisibly returns a \code{list} of the output of
   \link{\code{downloadAndProcessGEO}}.
 }
 \description{
@@ -20,6 +22,8 @@ Simply loops over all datasets in \code{data(dlbcl_overview)}.
 \examples{
 listTargets("brainarray")
 \dontrun{
+# Warning, very long processing times if data is not downloaded.
+
 # Preprocess with brainarray "Entrez" gene ids
 res <- downloadAndProcessDLBCL(cdf = "brainarray", target = "ENTREZG",
                                clean = FALSE)
