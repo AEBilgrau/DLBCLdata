@@ -39,19 +39,19 @@ downloadAndProcessDLBCL <- function(...) {
     geo_nbr <- DLBCL_overview$GSE[i]
     stdy    <- DLBCL_overview$Study[i]
 
-    cat(rep("\n", 4), "#### ", geo_nbr, " (", stdy,") ####",
-        rep("\n", 3), sep = "")
+    message(rep("\n", 4), "#### ", geo_nbr, " (", stdy,") ####",
+            rep("\n", 3))
     t <- system.time({
       res[[i]] <- downloadAndProcessGEO(geo_nbr = geo_nbr, ...)
     })
 
-    cat("\n", geo_nbr,  " downloaded and preprocessed successfully in ",
-        t[3] %/% 60, " minutes.\n", sep = "")
+    message("\n", geo_nbr,  " downloaded and preprocessed successfully in ",
+            t[3] %/% 60, " minutes.\n")
   }
 
   message("Saving all processed DLBCL data")
   saveRDS(res, file = file.path(getwd(), "dlbcl_data.Rds"))
 
-  message("\nFinished  in", (proc.time()-st)[3] %/% 60, "minutes.\n")
+  message("\nFinished  in ", (proc.time()-st)[3] %/% 60, " minutes.\n")
   return(invisible(res))
 }
