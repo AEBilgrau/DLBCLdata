@@ -4,14 +4,17 @@
 \name{DLBCL_overview}
 \alias{DLBCL_overview}
 \title{Overview of available DLBCL data}
-\format{A \code{data.frame} giving information about the DLBCL studies:\cr\cr
-  \code{'data.frame':  9 obs. of  6 variables:}\cr
-  \code{$ GSE       : chr  "GSE19246" "GSE12195" "GSE22895" "GSE31312" ...}\cr
-  \code{$ Study     : chr  "BCCA" "CUICG" "HMRC" "IDRC" ...}\cr
-  \code{$ FullName  : chr  "British Columbia Cancer Agency" "Columbia University, Institute for Cancer Genetics" "Hematologic Malignancies Research Consortium" "International DLBCL Rituximap Consortium, MD Anderson Project" ...}\cr
-  \code{$ Author    : chr  "Williams et. al." "Pasqualucci et. al." "Jima et. al." "Visco et. al." ...}\cr
-  \code{$ ArrayTypes: chr  "hgu133plus2" "hgu133plus2" "hugene10st" "hgu133plus2" ...}\cr
-  \code{$ Citation  : chr  "Williams PM, Li R"| __truncated__ "Pasqualucci L"| __truncated__ "Jima DD, Zhang J"| __truncated__ "Visco C, Li Y,"| __truncated__ ...}\cr}
+\format{A \code{data.frame} giving information about the DLBCL studies with the
+following columns:\cr
+\describe{
+  \item{GSE}{The accession number}
+  \item{Study}{A name or abbreviation of the study.}
+  \item{FullName}{The full name of the study.}
+  \item{Author}{The first author of the study.}
+  \item{ArrayTypes}{The array type(s) used for the gene expression profiles.}
+  \item{Citation}{Citation information. Please double check the information
+    if the data is used.}
+}}
 \description{
 A \code{data.frame} of the manually checked and curated DLBCL datasets in
 the \pkg{DLBCLdata}-package.
