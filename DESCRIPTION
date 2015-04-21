@@ -1,7 +1,7 @@
 Package: DLBCLdata
 Type: Package
 Title: Diffuse Large B-Cell Lymphoma data
-Version: 0.3
+Version: 0.9
 Date: 2014-11-06
 Author: Anders Ellern Bilgrau, Steffen Falgreen Larsen
 Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>
