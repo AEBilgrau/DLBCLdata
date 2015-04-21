@@ -60,16 +60,7 @@ This function creates the file `dlbcl_data.Rds` in the working directory which
 can later be read into **R** with `readRDS`.
 
 ## References
-      
-    1. Dybkaer K, Boegsted M, Falgreen S, Boedker JS et al. 
-       Diffuse Large B-cell Lymphoma Classification System That Associates  
-       Normal B-cell Subset Phenotypes with Prognosis. 
-       J Clin Oncol 2015 Apr 20;33(12):1379-88. PMID: 25800755 
-       (GSE56315)
+
+1. Dybkaer K, Boegsted M, Falgreen S, Boedker JS et al. *"Diffuse Large B-cell Lymphoma Classification System That Associates  Normal B-cell Subset Phenotypes with Prognosis."* J Clin Oncol 2015 Apr 20;33(12):1379-88. PMID: 25800755 (GSE56315)
        
-    2. Manhong Dai, Pinglang Wang, Andrew D. Boyd, Georgi Kostov, Brian Athey, 
-       Edward G. Jones, William E. Bunney, Richard M. Myer, Terry P. Speed, 
-       Huda Akil, Stanley J. Watson and Fan Meng. (2005) 
-       "Evolving Gene/Transcript Definitions Significantly Alter the 
-       Interpretation of GeneChip Data." Nucleic Acid Research 33 (20), e175 
-       [(http://brainarray.mbni.med.umich.edu)](http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/genomic_curated_CDF.asp)
+2. Manhong Dai, Pinglang Wang, Andrew D. Boyd, Georgi Kostov, Brian Athey, Edward G. Jones, William E. Bunney, Richard M. Myer, Terry P. Speed, Huda Akil, Stanley J. Watson and Fan Meng. (2005) *"Evolving Gene/Transcript Definitions Significantly Alter the Interpretation of GeneChip Data."* Nucleic Acid Research 33 (20), e175 [(http://brainarray.mbni.med.umich.edu)](http://brainarray.mbni.med.umich.edu/Brainarray/Database/CustomCDF/genomic_curated_CDF.asp)
