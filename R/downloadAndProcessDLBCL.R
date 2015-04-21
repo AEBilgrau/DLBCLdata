@@ -3,11 +3,11 @@
 #' Automatically download and process all support curated DLBCL datasets.
 #' Simply loops over all datasets in \code{data(dlbcl_overview)}.
 #'
-#' @param \dots Arguments passed to \link{\code{downloadAndProcessGEO}}.
+#' @param \dots Arguments passed to \code{\link{downloadAndProcessGEO}}.
 #' @return Saves a \code{list} of the processed datasets in the working
 #'   directory named "dlbcl_data.Rds".
 #'   Invisibly returns a \code{list} of the output of
-#'   \link{\code{downloadAndProcessGEO}}.
+#'   \code{\link{downloadAndProcessGEO}}.
 #' @author
 #'   Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
 #'   Steffen Falgreen Larsen <sfl (at) rn.dk>

@@ -7,13 +7,13 @@
 downloadAndProcessDLBCL(...)
 }
 \arguments{
-\item{\dots}{Arguments passed to \link{\code{downloadAndProcessGEO}}.}
+\item{\dots}{Arguments passed to \code{\link{downloadAndProcessGEO}}.}
 }
 \value{
 Saves a \code{list} of the processed datasets in the working
   directory named "dlbcl_data.Rds".
   Invisibly returns a \code{list} of the output of
-  \link{\code{downloadAndProcessGEO}}.
+  \code{\link{downloadAndProcessGEO}}.
 }
 \description{
 Automatically download and process all support curated DLBCL datasets.
