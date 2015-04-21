@@ -9,7 +9,6 @@
 #'   probabilities.
 #' @examples
 #' head(readDACData("GSE19246"))
-#' @keywords internal
 #' @export
 readDACData <- function(geo_nbr) {
   extdir <- system.file("extdata", package = "DLBCLdata")
