@@ -1,6 +1,15 @@
 #' \pkg{DLBCLdata}: Diffuse Large B-cell Lymphoma data
 #'
-#' An R-package for reproducible and easily available datasets in DLBCL.
+#' @description
+#' An R-package for reproducible and easily available gene expression profile
+#' (GEP) datasets in  Diffuse Large B-cell Lymphoma (DLBCL).
+#' This package automatically downloads and preproceses the microarray data
+#' using the manufacturer's or custom Brainarray chip definition files (CDF).
+#'
+#' The most important user function is \code{\link{downloadAndProcessGEO}} and
+#' the functions documented from there. For more information, read the README
+#' file \href{https://github.com/AEBilgrau/DLBCLdata}{here at GitHub.}
+#'
 #' @author
 #'   Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
 #'   Steffen Falgreen Larsen <sfl (at) rn.dk>
@@ -10,7 +19,10 @@
 #' @examples
 #' # Overview of the curated available data:
 #' data(DLBCL_overview)
-#' print(DLBCL_overview)
+#' print(DLBCL_overview[,-6])
+#'
+#' # Overview of all functions in DLBCLdata
+#' ls("package:DLBCLdata")
 NULL
 
 #' Overview of available DLBCL data
