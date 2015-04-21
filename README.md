@@ -1,8 +1,7 @@
 DLBCLdata
 =========
 
-Automated and reproducible download and preprocessing of Gene Expression Profile (GEP) studies of Diffuse Large B-Cell Lymphoma (DLBCL) using standard or custom Brainarray chip definition (CDF) files.
-
+Automated and reproducible download and preprocessing of Gene Expression Profile (GEP) studies of Diffuse Large B-Cell Lymphoma (DLBCL) using manufacturer's or custom Brainarray chip definition files (CDF) in **R**.
 
 ## Installation
 To install the latest version of **DLBCLdata** directly from the master branch here at GitHub, run
@@ -17,7 +16,7 @@ Note, that this version is in development and as such, it may be unstable. Be su
 For previous versions of **DLBCLdata**, visit the old [releases at GitHub](https://github.com/AEBilgrau/DLBCLdata/releases).
 
 ## Usage
-The package works with many NCBI GEO repositories. However, the package is tailored specifically to some DLBCL GEO accession numbers. To get an overview of the "supported" GEO numbers, see
+The package works with many NCBI GEO repositories. However, the package is tailored specifically to some DLBCL GEO accession numbers. To get an overview of the directly supported GEO numbers, see
 
 ```R
 data(DLBCL_overview)
@@ -38,7 +37,7 @@ To download and preprocesses *all* datasets featured in **DLBCLdata** (show with
 dlbcl_data <- downloadAndProcessDLBCL(cdf = "brainarray", target = "ENTREZG")
 ```
 
-This funciton also creates the file `dlbcl_data.Rds` in the working directory which can later be read with `readRDS`.
+This function creates the file `dlbcl_data.Rds` in the working directory which can later be read into **R** with `readRDS`.
 
 ## References
 
