@@ -20,17 +20,25 @@ For previous versions of **DLBCLdata**, visit the old [releases at GitHub](https
 The package works with many NCBI GEO repositories. However, the package is tailored specifically to some DLBCL GEO accession numbers. To get an overview of the "supported" GEO numbers, see
 
 ```R
-data(DLBCO_overview)
+data(DLBCL_overview)
 View(DLBCL_overview)
 ```
 
 To download and process as specific GEO number, simply run
 
 ```R
-res <- downloadAndProcessGEO("GSE19246", cdf = "brainarray", target = "ensg")
+res_gse19246 <- downloadAndProcessGEO("GSE19246", cdf = "brainarray", target = "ensg")
 ```
 
 This downloads the `.CEL` files and pre-processes the data directly to Ensembl gene identifiers (ENSG) using RMA normalization and custom Brainarray CDFs [1].
+
+To download and preprocesses *all* datasets featured in **DLBCLdata** (show with `DLBCL_overview`) using, say, brainarray to Entrez gene identifiers the following line will do so.
+
+```R
+dlbcl_data <- downloadAndProcessDLBCL(cdf = "brainarray", target = "ENTREZG")
+```
+
+This funciton also creates the file `dlbcl_data.Rds` in the working directory which can later be read with `readRDS`.
 
 ## References
 
