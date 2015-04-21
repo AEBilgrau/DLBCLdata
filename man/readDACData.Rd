@@ -21,5 +21,4 @@ DAC Windows interface.
 \examples{
 head(readDACData("GSE19246"))
 }
-\keyword{internal}
 
