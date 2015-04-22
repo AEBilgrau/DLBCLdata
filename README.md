@@ -16,7 +16,7 @@ devtools::install_github("AEBilgrau/DLBCLdata")
 Note, that this version is in development and, as such, it may be unstable. For previous versions of **DLBCLdata**, visit the old [releases at GitHub](https://github.com/AEBilgrau/DLBCLdata/releases).
 
 ## Usage
-The package *should* work with any NCBI GEO repository containing geneexpression data. However, the package is tailored specifically to some DLBCL GEO accession numbers. To get an overview of the directly "supported" GEO numbers, see
+The package *should* work with any NCBI GEO repository containing gene expression data. However, the package is tailored specifically to some DLBCL GEO accession numbers. To get an overview of the directly "supported" GEO numbers, see
 
 ```R
 data(DLBCL_overview)
@@ -37,7 +37,7 @@ res_gse56315 <-
 
 The former downloads the `.CEL` files and RMA preprocesses the data present in GSE56315 [1] using the standard Affymetrix CDF files. The latter downloads and preprocess directly to Ensembl gene identifiers (ENSG)  using RMA normalization and custom Brainarray CDFs [2].
 
-To download and preprocesses *all* datasets featured in **DLBCLdata** (show with `DLBCL_overview`) using, say, brainarray to Entrez gene identifiers the following line will do so.
+To download and preprocesses *all* datasets featured in **DLBCLdata** (shown with `DLBCL_overview`) using, say, brainarray to Entrez gene identifiers the following line will do so.
 
 ```R
 dlbcl_data <- downloadAndProcessDLBCL(cdf = "brainarray", target = "ENTREZG")
