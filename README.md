@@ -2,17 +2,17 @@ DLBCLdata
 =========
 
 The **DLBCLdata** package for **R** automates the download and preprocessing 
-large-scale Gene Expression Profile (GEP) studies of Diffuse Large B-Cell  
+of large-scale Gene Expression Profile (GEP) studies of Diffuse Large B-Cell  
 Lymphoma (DLBCL) from the NCBI (National Center for Biotechnical Information)
 GEO (Gene Expression Omnibus) website.
-It provides **R** users with *reproducible* and easy access to these GEP data 
-otherwise cumbersome to download and preprocess manually.
+It provides **R** users with *reproducible* and *easy* access to these GEP data 
+otherwise cumbersome manual procedure of downloading and preprocessing.
 The package handles the RMA preprocessing of the studies of DLBCL using the
 manufacturer's or custom Brainarray chip definition files (CDF) including 
 the installation of these CDFs.
 
 The package is (hopefully) written with enough generality to allow expansion
-to other DLBCL and non-DLBCL datasets.
+to other DLBCL and even non-DLBCL datasets (under an new package name).
 
 ## Installation
 To install the latest version of **DLBCLdata** directly from the master branch 
