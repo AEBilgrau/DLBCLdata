@@ -2,6 +2,7 @@ context("Download and process all DLBCL datasets")
 
 
 data(DLBCL_overview)
+deep_test <- FALSE  # Do extensive testing --- SLOW!
 
 if (deep_test) {  # deep_test is defined in ./test-all.R
   exclude <- character(0)
