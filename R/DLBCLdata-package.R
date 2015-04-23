@@ -1,4 +1,5 @@
-#' \pkg{DLBCLdata}: Diffuse Large B-cell Lymphoma data
+#' \pkg{DLBCLdata}: Automated and reproducible download and preprocessing of
+#'   DLBCL data
 #'
 #' @description
 #' An R-package for reproducible and easily available gene expression profile
