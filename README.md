@@ -41,7 +41,8 @@ The former downloads the `.CEL` files and RMA preprocesses the data present in G
 To download and preprocesses *all* datasets featured in **DLBCLdata** (shown with `DLBCL_overview`) using, say, brainarray to Entrez gene identifiers the following line will do so.
 
 ```R
-dlbcl_data <- downloadAndProcessDLBCL(cdf = "brainarray", target = "ENTREZG")
+dlbcl_data <- downloadAndProcessDLBCL(cdf = "brainarray", target = "entrezg")
+str(dlbcl_data, max.level = 2)  # Overview of the object
 ```
 
 This function creates the file `dlbcl_data.Rds` in the working directory which can later be read into **R** with `readRDS`.
