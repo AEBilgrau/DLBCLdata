@@ -49,6 +49,8 @@ downloadAndProcessDLBCL <- function(...) {
                     geo_nbr, t[3] %/% 60))
   }
 
+  names(res) <- as.character(DLBCL_overview$GSE)
+
   message("Saving all processed DLBCL data")
   saveRDS(res, file = file.path(getwd(), "dlbcl_data.Rds"))
 
