@@ -7,7 +7,8 @@
 \alias{DLBCLdata-package}
 \alias{dlbcl}
 \alias{dlbcldata}
-\title{\pkg{DLBCLdata}: Diffuse Large B-cell Lymphoma data}
+\title{\pkg{DLBCLdata}: Automated and reproducible download and preprocessing of
+  DLBCL data}
 \description{
 An R-package for reproducible and easily available gene expression profile
 (GEP) datasets in  Diffuse Large B-cell Lymphoma (DLBCL).
