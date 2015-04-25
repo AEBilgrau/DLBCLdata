@@ -11,7 +11,8 @@ Description: Automatic download and preparation of selected
     Large-Scale Diffuse Large B-Cell Lymphoma gene expression profile studies
 KeepSource: yes
 Suggests:
-    survival
+    survival,
+    testthat
 Imports:
     AnnotationDbi,
     Biobase,
@@ -21,5 +22,3 @@ Imports:
     oligo,
     XML
 License: GPL (>=2)
-Suggests:
-  testthat
