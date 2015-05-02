@@ -2,9 +2,9 @@
 =============
 #### Automated and reproducible download and preprocessing of DLBCL data
 
-The **DLBCLdata** package for **R** automates the download and preprocessing of large-scale Gene Expression Profile (GEP) studies of Diffuse Large B-Cell Lymphoma (DLBCL) from the NCBI (National Center for Biotechnical Information) GEO (Gene Expression Omnibus) website. It provides **R** users with *reproducible* and *easy* access to these GEP data otherwise cumbersome manual procedure of downloading and preprocessing. The package handles the RMA preprocessing of the studies of DLBCL using the manufacturer's or custom Brainarray chip definition files (CDF) including the installation of these CDFs.
+The **DLBCLdata** package for **R** automates the download and preprocessing of large-scale Gene Expression Profile (GEP) studies of Diffuse Large B-Cell Lymphoma (DLBCL) from the NCBI (National Center for Biotechnical Information) GEO (Gene Expression Omnibus) website. It provides **R** users with *reproducible* and *easy* access to GEP data on GEO as an alternative to the otherwise cumbersome manual downloading and preprocessing. The package handles the RMA preprocessing of the studies of DLBCL using the manufacturer's or custom Brainarray [2] chip definition files (CDF) including the installation of these CDFs.
 
-The package is (hopefully) written with enough generality to allow expansion to other DLBCL and even non-DLBCL datasets (under an new package name).
+The package is (hopefully) written with enough generality to allow expansion to other DLBCL and non-DLBCL datasets.
 
 ## Installation
 To install the latest version of **DLBCLdata** directly from the master branch at GitHub, run
@@ -24,12 +24,13 @@ data(DLBCL_overview)
 View(DLBCL_overview)
 ```
 
-To download and process a specific GEO number, simply run
+To download and process a specific GEO number, GSE56315 [1] say, simply run
 
 ```R
 res_gse56315 <- downloadAndProcessGEO("GSE56315")
 ```
-or more specifically
+
+Alternatively, a non-standard CDF file can be specified:
 
 ```R
 res_gse56315 <- 
