@@ -7,12 +7,12 @@
 \format{A \code{data.frame} giving information about the DLBCL studies with the
 following columns:\cr
 \describe{
-  \item{GSE}{The accession number}
-  \item{Study}{A name or abbreviation of the study.}
-  \item{FullName}{The full name of the study.}
-  \item{Author}{The first author of the study.}
-  \item{ArrayTypes}{The array type(s) used for the gene expression profiles.}
-  \item{Citation}{Citation information. Please double check the information
+  \item{\code{GSE}}{The accession number}
+  \item{\code{Study}}{A name or abbreviation of the study.}
+  \item{\code{FullName}}{The full name of the study.}
+  \item{\code{Author}}{The first author of the study.}
+  \item{\code{ArrayTypes}}{The array type(s) used for the gene expression profiles.}
+  \item{\code{Citationv}}{Citation information. Please double check the information
     if the data is used.}
 }}
 \description{
