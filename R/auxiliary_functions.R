@@ -19,3 +19,13 @@ getAffyTargets <- function() {
   return(c("core", "full", "probesets"))
 }
 
+gpl2affy <- function(gpl) {
+  affy <- gpl
+  affy <- gsub("GPL570", "hgu133plus2", affy)
+  affy <- gsub("GPL96", "hgu133a", affy)
+  affy <- gsub("GPL97", "hgu133b", affy)
+  affy <- gsub("GPL5175", "huex10st", affy)
+  affy <- gsub("GPL5175", "huex10st", affy)
+  affy <- gsub("GPL6244", "hugene10st", affy)
+  return(affy)
+}
