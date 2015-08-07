@@ -9,8 +9,8 @@
 #' @param version A character of length 1 giving the version to download.
 #' @return Invisibly returns a list of the locations of the saved files.
 #' @author
-#'   Steffen Falgreen
-#'   Anders Ellern Bilgrau <abilgrau (at) math.aau.dk
+#'   Steffen Falgreen,
+#'   Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
 #' @seealso \code{\link{tempdir}}, \code{\link{install.packages}}
 #' @references
 #'   See \url{http://brainarray.mbni.med.umich.edu}.
