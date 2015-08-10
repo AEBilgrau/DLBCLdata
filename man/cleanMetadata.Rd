@@ -25,7 +25,7 @@ cleanMetadata(meta_data)
 \item{meta_data}{Output from \code{downloadAndPrepareMetadata}.}
 }
 \value{
-Returns a specfically cleaned \code{data.frame} for the GEO dataset.
+Returns a specifically cleaned \code{data.frame} for the GEO dataset.
 }
 \description{
 S3 method dispatch giving the custom functions for formatting datasets.
@@ -45,7 +45,7 @@ GSE11318:\cr
 
 GSE31312:\cr
    This function makes the samples GSM776068, GSM776149, and GSM776462 to be
-   left out of the downsteam preprocessing due to bad array quality.
+   left out of the downstream preprocessing due to bad array quality.
 
 GSE34171:\cr
    The cleanup of GSE34171 (MDFCI) adds three batches corresponding to each

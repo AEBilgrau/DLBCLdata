@@ -8,7 +8,7 @@
 #'
 #' @param meta_data Output from \code{downloadAndPrepareMetadata}.
 #' @return
-#'   Returns a specfically cleaned \code{data.frame} for the GEO dataset.
+#'   Returns a specifically cleaned \code{data.frame} for the GEO dataset.
 #' @author Anders Ellern Bilgrau, Steffen Falgreen Larsen
 #' @rdname cleanMetadata
 #' @export
