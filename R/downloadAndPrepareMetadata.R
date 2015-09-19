@@ -34,7 +34,7 @@ downloadAndPrepareMetadata <- function(geo_nbr,
   # Download data if not already downloaded
   if (verbose) message("Downloading files...")
   dl_dir <- file.path(destdir, geo_nbr)
-  dir.create(dl_dir, showWarnings = FALSE)
+  dir.create(dl_dir, showWarnings = FALSE, recursive = TRUE)
   dl <- getGEO(GEO = geo_nbr, destdir = dl_dir,
                GSEMatrix = TRUE, getGPL = FALSE)
 
