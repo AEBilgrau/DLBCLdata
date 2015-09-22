@@ -18,7 +18,7 @@ cleanMetadata.GSE56315 <- function(meta_data) {
   meta_data$CEL <-
     gsub("^.+/(GSM[0-9]+)\\..+$", "\\1", meta_data$supplementary_file)
   meta_data$GSM <- as.character(meta_data$geo_accession)
-  rownames(meta_data) <- meta_data$CEL
+  # rownames(meta_data) <- meta_data$CEL
 
   return(meta_data)
 }
