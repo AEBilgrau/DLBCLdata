@@ -1,13 +1,13 @@
 Package: DLBCLdata
 Type: Package
-Title: Diffuse Large B-Cell Lymphoma data
+Title: Automated and reproducible download and preprocessing of DLBCL data
 Version: 1.0
 Date: 2015-11-22
 Author: Anders Ellern Bilgrau, Steffen Falgreen Larsen
 Maintainer: Anders Ellern Bilgrau <abilgrau@math.aau.dk>
 URL: http://github.com/AEBilgrau/DLBCLdata
 BugReports: https://github.com/AEBilgrau/DLBCLdata/issues
-Description: Automatic download and preparation of selected
+Description: Automatic downloading, preprocessing, and preparation of selected
     Large-Scale Diffuse Large B-Cell Lymphoma gene expression profile studies
 KeepSource: yes
 Suggests:
