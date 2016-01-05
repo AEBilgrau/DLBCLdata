@@ -37,7 +37,7 @@ res3 <- downloadAndProcessDLBCL()  #= downloadAndProcessDLBCL(cdf = "affy")
 }
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
-  Steffen Falgreen Larsen <sfl (at) rn.dk>
+Anders Ellern Bilgrau\cr
+  Steffen Falgreen Larsen
 }
 

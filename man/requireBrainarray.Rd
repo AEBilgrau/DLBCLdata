@@ -31,7 +31,7 @@ print(tmp.path2)
 }
 \author{
 Steffen Falgreen,
-  Anders Ellern Bilgrau <abilgrau (at) math.aau.dk>
+  Anders Ellern Bilgrau
 }
 \references{
 See \url{http://brainarray.mbni.med.umich.edu}.

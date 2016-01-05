@@ -28,7 +28,7 @@ print(DLBCL_overview[,-6])
 ls("package:DLBCLdata")
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
-  Steffen Falgreen Larsen <sfl (at) rn.dk>
+Anders Ellern Bilgrau\cr
+  Steffen Falgreen Larsen
 }
 

@@ -22,7 +22,7 @@ DAC Windows interface.
 head(readDACData("GSE19246"))
 }
 \author{
-Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
+Anders Ellern Bilgrau \cr
   Steffen Falgreen
 }
 \references{

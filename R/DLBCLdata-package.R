@@ -12,8 +12,8 @@
 #' file \href{https://github.com/AEBilgrau/DLBCLdata}{here at GitHub.}
 #'
 #' @author
-#'   Anders Ellern Bilgrau <abilgrau (at) math.aau.dk> \cr
-#'   Steffen Falgreen Larsen <sfl (at) rn.dk>
+#'   Anders Ellern Bilgrau\cr
+#'   Steffen Falgreen Larsen
 #' @docType package
 #' @name DLBCLdata-package
 #' @aliases DLBCLdata-package DLBCLdata dlbcldata dlbcl DLBCL
