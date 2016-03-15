@@ -7,16 +7,20 @@
 basenameSansCEL(x)
 }
 \arguments{
-\item{x}{A \code{character} vector of file names.}
+\item{x}{A \code{character} vector of filenames and possibly with path.}
 }
 \value{
 A \code{character} vector of the same length as \code{x} with the
-  basenames and no \code{.CEL} extension.
+  file basename without the path and \code{.CEL} extension.
 }
 \description{
 Functions as \code{\link{basename}} but also remove any \code{.CEL}
 or \code{.CEL.gz} extension. The function is not case sensitive of toward
 the extension.
+}
+\examples{
+x <- c("C:/test/mycelfile.cel", "myothercelfile.cel")
+basenameSansCEL(x)
 }
 \seealso{
 \code{\link{basename}}

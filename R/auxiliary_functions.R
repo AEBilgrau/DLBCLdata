@@ -5,10 +5,13 @@
 #' or \code{.CEL.gz} extension. The function is not case sensitive of toward
 #' the extension.
 #'
-#' @param x A \code{character} vector of file names.
+#' @param x A \code{character} vector of filenames and possibly with path.
 #' @return A \code{character} vector of the same length as \code{x} with the
-#'   basenames and no \code{.CEL} extension.
+#'   file basename without the path and \code{.CEL} extension.
 #' @seealso \code{\link{basename}}
+#' @examples
+#' x <- c("C:/test/mycelfile.cel", "myothercelfile.cel")
+#' basenameSansCEL(x)
 #' @export
 basenameSansCEL <- function(x) {
   return(gsub("\\.cel$|\\.cel.gz$", "", basename(x), ignore.case = TRUE))
