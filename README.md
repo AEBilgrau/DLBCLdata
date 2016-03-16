@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/AEBilgrau/DLBCLdata.svg?branch=master)](https://travis-ci.org/AEBilgrau/DLBCLdata)
+
 **DLBCLdata**
 =============
 #### Automated and reproducible download and preprocessing of DLBCL data
