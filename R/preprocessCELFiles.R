@@ -25,8 +25,7 @@ preprocessCELFiles <- function(cel_files,
                                target,
                                version = getLatestVersion(),
                                background = TRUE,
-                               normalize = TRUE,
-                               path = getwd()) {
+                               normalize = TRUE) {
   getCDF <- function(file) {
     return(read.celfile.header(file)$cdfName)
   }

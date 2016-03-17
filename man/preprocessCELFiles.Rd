@@ -5,8 +5,7 @@
 \title{RMA preprocess CEL files}
 \usage{
 preprocessCELFiles(cel_files, cdf = c("affy", "brainarray"), target,
-  version = getLatestVersion(), background = TRUE, normalize = TRUE,
-  path = getwd())
+  version = getLatestVersion(), background = TRUE, normalize = TRUE)
 }
 \arguments{
 \item{cel_files}{A character vector of .CEL files.}
