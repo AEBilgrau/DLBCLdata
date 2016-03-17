@@ -8,7 +8,7 @@ Maintainer: Anders Ellern Bilgrau <anders.ellern.bilgrau@gmail.com>
 URL: http://github.com/AEBilgrau/DLBCLdata
 BugReports: https://github.com/AEBilgrau/DLBCLdata/issues
 Description: Automatic downloading, preprocessing, and preparation of selected
-    Large-Scale Diffuse Large B-Cell Lymphoma gene expression profile studies
+  Large-Scale Diffuse Large B-Cell Lymphoma gene expression profile studies.
 KeepSource: yes
 Suggests:
     survival,
