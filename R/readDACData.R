@@ -6,7 +6,7 @@
 #'
 #' @param geo_nbr A \code{character} string giving the GSE number.
 #' @return A \code{data.frame} of the predicted classes and the class
-#'   probabilities.
+#'   probabilities. Returns \code{NULL} if \code{geo_nbr} is not found.
 #' @author
 #'   Anders Ellern Bilgrau \cr
 #'   Steffen Falgreen
@@ -16,8 +16,15 @@
 #'       tool for cell of origin class allows comparative analysis of gene
 #'       expression in diffuse large B-cell lymphoma.
 #'       PloS One, 8(2), e55895. doi:10.1371/journal.pone.0055895
+#' @note
+#' The GSE11318 dataset was not classified using the DAC.
 #' @examples
+#' data(DLBCL_overview)
+#' head(DLBCL_overview[, -c(3,4,6)])
+#'
 #' head(readDACData("GSE19246"))
+#'
+#' readDACData("UNSUPPORTED_STUDY")
 #' @export
 readDACData <- function(geo_nbr) {
   extdir <- system.file("extdata", package = "DLBCLdata")

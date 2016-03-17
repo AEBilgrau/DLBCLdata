@@ -11,15 +11,23 @@ readDACData(geo_nbr)
 }
 \value{
 A \code{data.frame} of the predicted classes and the class
-  probabilities.
+  probabilities. Returns \code{NULL} if \code{geo_nbr} is not found.
 }
 \description{
 Functions to read the internal data files of classified CEL files using
 the DLBCL Automatic Classifier (DAC) [1]. These were manually supplied to the
 DAC Windows interface.
 }
+\note{
+The GSE11318 dataset was not classified using the DAC.
+}
 \examples{
+data(DLBCL_overview)
+head(DLBCL_overview[, -c(3,4,6)])
+
 head(readDACData("GSE19246"))
+
+readDACData("UNSUPPORTED_STUDY")
 }
 \author{
 Anders Ellern Bilgrau \cr
