@@ -2,6 +2,15 @@
 \title{News for Package \pkg{DLBCLdata}}
 \newcommand{\cpkg}{\href{http://CRAN.R-project.org/package=#1}{\pkg{#1}}}
 
+\section{Changes to version 1.0}{
+  \itemize{
+    \item Expanded documentiation.
+    \item Added travis CI continous integrator.
+    \item Added further unit tests and updated package structure to new
+      \pkg{testthat} version.
+  }
+}
+
 
 \section{Changes to version 0.9}{
   \itemize{
