@@ -1,6 +1,8 @@
 # https://docs.travis-ci.com/user/languages/r/
 language: r
 
+warnings_are_errors: false
+
 cache: packages
 
 bioc_required: true
