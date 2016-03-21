@@ -10,7 +10,7 @@ cleanMetadata.GSE10846 <- function(meta_data) {
   # Generic clean
   suppressMessages(meta_data <- cleanMetadata.data.frame(meta_data))
 
-  stopifnot(require(survival))
+  stopifnot(requireNamespace("survival"))
 
   # Helper functions
   wo.na <- function(x) sum(x[!is.na(x)])
@@ -121,13 +121,13 @@ cleanMetadata.GSE10846 <- function(meta_data) {
   metadataLLMPP$ipi.hl2[ipi$ipi.na == 4 & ipi$na.1] <- "4-5"
 
   # Creating survival objects
-  metadataLLMPP$OS <- Surv(metadataLLMPP$FU,
-                            metadataLLMPP$survival.status == "DEAD")
+  metadataLLMPP$OS <- survival::Surv(metadataLLMPP$FU,
+                                     metadataLLMPP$survival.status == "DEAD")
 
   os5  <- ifelse(metadataLLMPP$FU > 5, 5, metadataLLMPP$FU)
   ios5 <- pmin(ifelse(metadataLLMPP$FU > 5, 0, 1), metadataLLMPP$OS[,2])
 
-  metadataLLMPP$OS5  <- Surv(as.numeric(os5), ios5)
+  metadataLLMPP$OS5  <- survival::Surv(as.numeric(os5), ios5)
 
   metadataLLMPP$WrightClass  <- metadataLLMPP$microarray.diagnosis
   metadataLLMPP$WrightClass2 <- as.character(metadataLLMPP$WrightClass)
