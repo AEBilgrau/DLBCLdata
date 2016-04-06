@@ -22,7 +22,7 @@
 #'   Steffen Falgreen Larsen
 #' @examples
 #' \dontrun{
-#' data(DLBCL_overview)
+#' print(DLBCL_overview)
 #' geo_nbr <- DLBCL_overview[6,1]
 #' res <- downloadAndProcessGEO(geo_nbr = geo_nbr, cdf = "brainarray",
 #'                              target = "ENSG", clean = FALSE)

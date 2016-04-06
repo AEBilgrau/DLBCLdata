@@ -32,12 +32,10 @@ downloadAndProcessDLBCL <- function(...) {
   st <- proc.time()
   message("\nDownloading and processing all DLBCL datasets\n")
 
-  data(DLBCL_overview)  # Load data overview
-
   res <- list()
-  for (i in 1:nrow(DLBCL_overview)) {
-    geo_nbr <- as.character(DLBCL_overview$GSE[i])
-    stdy    <- as.character(DLBCL_overview$Study[i])
+  for (i in 1:nrow(DLBCLdata::DLBCL_overview)) {
+    geo_nbr <- as.character(DLBCLdata::DLBCL_overview$GSE[i])
+    stdy    <- as.character(DLBCLdata::DLBCL_overview$Study[i])
 
     message(sprintf("\n\n\n\n #### %s (%s) ####\n\n\n", geo_nbr, stdy))
 
@@ -49,7 +47,7 @@ downloadAndProcessDLBCL <- function(...) {
                     geo_nbr, t[3] %/% 60))
   }
 
-  names(res) <- as.character(DLBCL_overview$GSE)
+  names(res) <- as.character(DLBCLdata::DLBCL_overview$GSE)
 
   message("Saving all processed DLBCL data")
   saveRDS(res, file = file.path(getwd(), "dlbcl_data.Rds"))

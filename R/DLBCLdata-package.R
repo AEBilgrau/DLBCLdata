@@ -19,7 +19,6 @@
 #' @aliases DLBCLdata-package DLBCLdata dlbcldata dlbcl DLBCL
 #' @examples
 #' # Overview of the curated available data:
-#' data(DLBCL_overview)
 #' print(DLBCL_overview[,-6])
 #'
 #' # Overview of all functions in DLBCLdata
@@ -50,7 +49,6 @@ NULL
 #' }
 #' @keywords datasets, data
 #' @examples
-#' data(DLBCL_overview)
 #' print(DLBCL_overview[,-6])
 #' #View(DLBCL_overview)
 NULL

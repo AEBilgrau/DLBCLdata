@@ -22,7 +22,6 @@ DAC Windows interface.
 The GSE11318 dataset was not classified using the DAC.
 }
 \examples{
-data(DLBCL_overview)
 head(DLBCL_overview[, -c(3,4,6)])
 
 head(readDACData("GSE19246"))

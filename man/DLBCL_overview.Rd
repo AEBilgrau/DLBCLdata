@@ -23,7 +23,6 @@ acronym, the expanded acronym, the principal author, the arraytypes
 present in the study, and a full citation.
 }
 \examples{
-data(DLBCL_overview)
 print(DLBCL_overview[,-6])
 #View(DLBCL_overview)
 }

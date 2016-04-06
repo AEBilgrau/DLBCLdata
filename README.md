@@ -22,7 +22,7 @@ Note, that this version is in development and, as such, it may be unstable. For 
 The package *should* work with any NCBI GEO repository containing gene expression data. However, the package is tailored specifically to some DLBCL GEO accession numbers. To get an overview of the directly "supported" GEO numbers, see
 
 ```R
-data(DLBCL_overview)
+library("DLBCL_overview"")
 View(DLBCL_overview)
 ```
 

@@ -21,7 +21,6 @@ file \href{https://github.com/AEBilgrau/DLBCLdata}{here at GitHub.}
 }
 \examples{
 # Overview of the curated available data:
-data(DLBCL_overview)
 print(DLBCL_overview[,-6])
 
 # Overview of all functions in DLBCLdata
